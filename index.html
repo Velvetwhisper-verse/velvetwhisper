@@ -5,19 +5,28 @@
   <title>VelvetWhisper | Reading Universe</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
+    :root {
+      --bg-light: #fff;
+      --text-light: #111;
+      --border-light: #f2c2e0;
+      --bg-dark: #111;
+      --text-dark: #f2c2e0;
+      --border-dark: #f2c2e0;
+    }
+
     body {
-      background-color: #111;
-      color: #f2c2e0;
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
       font-family: "Georgia", serif;
       text-align: center;
       padding: 60px 20px;
       margin: 0;
+      transition: all 0.3s ease;
     }
 
     h1 {
       font-size: 2em;
       margin-bottom: 20px;
-      color: #f2c2e0;
     }
 
     .subtitle {
@@ -30,9 +39,9 @@
       display: block;
       margin: 20px auto;
       font-size: 1.2em;
-      color: #f2c2e0;
       text-decoration: none;
-      border: 1px solid #f2c2e0;
+      border: 1px solid var(--border-dark);
+      color: var(--text-dark);
       padding: 14px 10px;
       width: 90%;
       max-width: 300px;
@@ -42,17 +51,42 @@
     }
 
     .link:hover {
-      background-color: #f2c2e0;
-      color: #111;
+      background-color: var(--text-dark);
+      color: var(--bg-dark);
       transform: scale(1.03);
+    }
+
+    .lang-switch {
+      margin-top: 50px;
+      font-size: 0.85em;
+      color: #777;
+    }
+
+    @media (prefers-color-scheme: light) {
+      body {
+        background-color: var(--bg-light);
+        color: var(--text-light);
+      }
+      .link {
+        border-color: var(--border-light);
+        color: var(--text-light);
+      }
+      .link:hover {
+        background-color: var(--text-light);
+        color: var(--bg-light);
+      }
     }
   </style>
 </head>
 <body>
   <h1>Welcome to VelvetWhisper</h1>
-  <p class="subtitle">written by <strong>BabyAlexis</strong> — your private storymaker 🖤</p>
+  <p class="subtitle">written by <strong>BabyAlexis</strong> — your private storymaker 💗</p>
 
-  <a class="link" href="/novels/transformers/index.html">Transformers 乙女专区</a>
-  <a class="link" href="/novels/cod/index.html">使命召唤乙女专区</a>
+  <a class="link" href="/novels/transformers/index.html">Transformers乙女 Universe</a>
+  <a class="link" href="/novels/cod/index.html">Call of Duty乙女 Universe</a>
+
+  <div class="lang-switch">
+    Want Chinese version? <a href="/zh/index.html" style="color:#aaa;">点击这里切换到中文版</a>
+  </div>
 </body>
 </html>
