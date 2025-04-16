@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <title>VelvetWhisper | Reading Universe</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg-light: #fff;
@@ -15,22 +16,31 @@
     }
 
     body {
+      font-family: 'Cormorant Garamond', serif;
       background-color: var(--bg-dark);
       color: var(--text-dark);
-      font-family: "Georgia", serif;
       text-align: center;
       padding: 60px 20px;
       margin: 0;
       transition: all 0.3s ease;
+      animation: fadeIn 1.4s ease-in;
+      background-image: radial-gradient(circle at 50% 30%, #ffccf350 0%, #111 60%);
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     h1 {
-      font-size: 2em;
+      font-size: 2.2em;
       margin-bottom: 20px;
     }
 
     .subtitle {
-      font-size: 0.95em;
+      font-size: 1em;
       color: #999;
       margin-bottom: 40px;
     }
@@ -56,6 +66,13 @@
       transform: scale(1.03);
     }
 
+    .footer {
+      font-size: 0.8em;
+      color: #777;
+      margin-top: 60px;
+      padding-bottom: 20px;
+    }
+
     @media (prefers-color-scheme: light) {
       body {
         background-color: var(--bg-light);
@@ -78,5 +95,21 @@
 
   <a class="link" href="/novels/transformers/index.html">Transformers Otome Universe</a>
   <a class="link" href="/novels/cod/index.html">Call of Duty Otome Universe</a>
+
+  <div class="footer">
+    ✧ All stories by BabyAlexis · For personal reading only · Do not copy, repost or share<br/>
+    ✧ 本站内容仅限个人阅读，禁止转发、截图、复制、商用。违者将永失访问权限。
+  </div>
+
+  <!-- 防复制脚本 -->
+  <script>
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('selectstart', e => e.preventDefault());
+    document.addEventListener('keydown', e => {
+      if (e.ctrlKey && ['c', 'u', 'a'].includes(e.key.toLowerCase())) {
+        e.preventDefault();
+      }
+    });
+  </script>
 </body>
 </html>
