@@ -8,13 +8,17 @@
   <style>
     body {
       margin: 0;
-      padding: 60px 20px 120px;
+      padding: 60px 20px 140px;
       font-family: 'Georgia', serif;
       text-align: center;
-      background: radial-gradient(circle at center, #ffe6f2, #111 60%);
       color: #f2c2e0;
-      animation: fadeIn 1.2s ease-in;
+      background-image:
+        radial-gradient(circle at 50% 30%, #ffccf3 0%, #111 40%),
+        url('https://raw.githubusercontent.com/malven/starscape/master/starscape.svg');
+      background-size: cover;
+      background-position: center;
       background-attachment: fixed;
+      animation: fadeIn 1.4s ease-in;
     }
 
     @keyframes fadeIn {
@@ -46,18 +50,12 @@
       width: 90%;
       max-width: 300px;
       border-radius: 12px;
-      transition: all 0.3s ease;
-    }
-
-    .link:hover {
-      background-color: #f2c2e0;
-      color: #111;
-      transform: scale(1.03);
     }
 
     .footer {
       position: fixed;
       bottom: 10px;
+      left: 0;
       width: 100%;
       text-align: center;
       font-size: 0.85em;
@@ -65,7 +63,6 @@
       color: #aaa;
       padding: 0 20px;
       z-index: 100;
-      background: transparent;
     }
 
     @media (prefers-color-scheme: light) {
@@ -77,11 +74,6 @@
       .link {
         border-color: #f2c2e0;
         color: #111;
-      }
-
-      .link:hover {
-        background-color: #f2c2e0;
-        color: #fff;
       }
 
       .subtitle {
