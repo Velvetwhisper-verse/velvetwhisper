@@ -87,33 +87,32 @@
   font-family: 'Quicksand', sans-serif;
   display: inline-block;
   margin: 40px auto;
-  font-size: 1.4em;
-  font-weight: bold;
-  text-decoration: none;
-  padding: 14px 26px;
-  border-radius: 40px;
-  background-color: transparent;
+  font-size: 1.5em;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 2px;
   color: #f2c2e0;
-  border: 2px solid #f2c2e0;
-  box-shadow: 0 0 12px #f2c2e040;
-  transition: all 0.4s ease;
-  animation: pulse 2.5s infinite ease-in-out;
-  text-shadow: 0 0 6px #f2c2e060;
-  backdrop-filter: blur(2px);
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  text-shadow: 0 0 6px #f2c2e0a5;
+  animation: glowtext 2s infinite ease-in-out;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 #enter-btn:hover {
-  background-color: rgba(255, 255, 255, 0.05);
   color: #ffffff;
-  border-color: #ffffff;
-  box-shadow: 0 0 20px #f2c2e080;
-  transform: scale(1.06);
+  text-shadow: 0 0 10px #ffffff, 0 0 20px #f2c2e0;
+  transform: scale(1.05);
 }
 
-@keyframes pulse {
-  0% { box-shadow: 0 0 8px #f2c2e020; }
-  50% { box-shadow: 0 0 14px #f2c2e080; }
-  100% { box-shadow: 0 0 8px #f2c2e020; }
+@keyframes glowtext {
+  0%   { text-shadow: 0 0 4px #f2c2e060; }
+  50%  { text-shadow: 0 0 8px #f2c2e0a0; }
+  100% { text-shadow: 0 0 4px #f2c2e060; }
 }
 
     .footer {
