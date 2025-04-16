@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <title>VelvetWhisper | Reading Universe</title>
 
-  <!-- Favicon（兼容所有浏览器） -->
+  <!-- Favicon -->
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
-  <!-- SEO 设置 -->
+  <!-- SEO -->
   <meta name="description" content="VelvetWhisper - A private fiction space created by BabyAlexis, offering immersive fandom universes and soft shameful indulgence.">
   <meta property="og:title" content="VelvetWhisper | BabyAlexis' Private Fiction Universe">
   <meta property="og:description" content="Enter a dreamy world of fanfiction, created by BabyAlexis. Private, soft, and only for those who understand.">
@@ -16,8 +16,6 @@
   <meta property="og:image" content="/favicon.ico">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- 字体 -->
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
 
   <style>
@@ -100,20 +98,28 @@
       z-index: 100;
     }
 
-    /* 播放按钮样式 */
     #music-btn {
       position: fixed;
       bottom: 80px;
       right: 20px;
-      background-color: transparent;
-      border: 1px solid #f2c2e0;
-      color: #f2c2e0;
+      background-color: #f2c2e0;
+      color: #111;
       font-size: 0.9em;
-      border-radius: 8px;
-      padding: 6px 10px;
+      border: none;
+      border-radius: 50%;
+      padding: 14px;
+      width: 52px;
+      height: 52px;
       cursor: pointer;
       z-index: 200;
+      box-shadow: 0 0 8px #f2c2e0a0;
       font-family: 'Quicksand', sans-serif;
+      transition: all 0.3s ease;
+    }
+
+    #music-btn:hover {
+      box-shadow: 0 0 14px #f2c2e0cc;
+      transform: scale(1.05);
     }
 
     @media (prefers-color-scheme: light) {
@@ -141,8 +147,8 @@
       }
 
       #music-btn {
-        border-color: #914a91;
-        color: #914a91;
+        background-color: #e0aee0;
+        color: #111;
       }
     }
   </style>
@@ -160,13 +166,13 @@
     ✧ 本站内容仅限个人阅读，禁止转发、截图、复制、商用。违者将永失访问权限。
   </div>
 
-  <!-- 音乐控制按钮 -->
-  <button id="music-btn">🔊 Play Music</button>
+  <!-- 星星按钮 -->
+  <button id="music-btn" title="Play music">⭐</button>
 
   <!-- 背景音乐 -->
-  <audio id="bg-music" src="https://cdn.pixabay.com/download/audio/2023/06/04/audio_1c6f46ed7a.mp3" preload="auto"></audio>
+  <audio id="bg-music" src="/clair.mp3" preload="auto"></audio>
 
-  <!-- 防复制 + 播放逻辑 -->
+  <!-- 防复制 + 播放按钮功能 -->
   <script>
     const music = document.getElementById("bg-music");
     const musicBtn = document.getElementById("music-btn");
@@ -176,10 +182,12 @@
       if (!isPlaying) {
         music.volume = 0.5;
         music.play();
-        musicBtn.innerText = "🔇 Pause Music";
+        musicBtn.innerText = "✧";
+        musicBtn.title = "Pause music";
       } else {
         music.pause();
-        musicBtn.innerText = "🔊 Play Music";
+        musicBtn.innerText = "⭐";
+        musicBtn.title = "Play music";
       }
       isPlaying = !isPlaying;
     });
