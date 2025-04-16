@@ -82,6 +82,36 @@
       transform: scale(1.05);
     }
 
+    /* 独立 enter 按钮样式 */
+    #enter-btn {
+      font-family: 'Quicksand', sans-serif;
+      display: inline-block;
+      margin: 40px auto;
+      font-size: 1.4em;
+      font-weight: bold;
+      text-decoration: none;
+      padding: 16px 24px;
+      border-radius: 40px;
+      background: linear-gradient(145deg, #f2c2e0, #d9a8d9);
+      color: #111;
+      box-shadow: 0 0 20px #f2c2e080;
+      transition: all 0.4s ease;
+      border: none;
+      animation: pulse 2.5s infinite ease-in-out;
+    }
+
+    #enter-btn:hover {
+      background: linear-gradient(145deg, #ffd6ec, #e4b3e4);
+      transform: scale(1.08);
+      box-shadow: 0 0 30px #f2c2e0aa;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 10px #f2c2e080; }
+      50% { box-shadow: 0 0 20px #f2c2e0c0; }
+      100% { box-shadow: 0 0 10px #f2c2e080; }
+    }
+
     .footer {
       position: fixed;
       bottom: 10px;
@@ -157,7 +187,7 @@
   <p class="subtitle">written by <strong>BabyAlexis</strong> — your private storymaker </p>
 
   <!-- Enter按钮 -->
-  <a class="link" id="enter-btn">💗Enter💗</a>
+  <a id="enter-btn">💗 Enter 💗</a>
 
   <!-- 隐藏入口（点Enter后显示） -->
   <div id="universe-section" style="display:none; margin-top:40px;">
@@ -190,7 +220,7 @@
         musicBtn.textContent = "⏸️";
       } else {
         music.pause();
-        musicBtn.textContent = "⏯️";
+        musicBtn.textContent = "▶️";
       }
       isPlaying = !isPlaying;
     });
