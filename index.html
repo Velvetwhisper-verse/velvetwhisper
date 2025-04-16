@@ -56,12 +56,6 @@
       transform: scale(1.03);
     }
 
-    .lang-switch {
-      margin-top: 50px;
-      font-size: 0.85em;
-      color: #777;
-    }
-
     @media (prefers-color-scheme: light) {
       body {
         background-color: var(--bg-light);
@@ -84,39 +78,5 @@
 
   <a class="link" href="/novels/transformers/index.html">Transformers Otome Universe</a>
   <a class="link" href="/novels/cod/index.html">Call of Duty Otome Universe</a>
-
-  <div class="lang-switch">
-    <a href="#" onclick="translateToChinese()" style="color:#aaa;">点击这里切换到中文版</a>
-  </div>
-
-  <!-- Google Translate Element (hidden) -->
-  <div id="google_translate_element" style="display:none;"></div>
-
-  <script type="text/javascript">
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement(
-        {
-          pageLanguage: 'en',
-          includedLanguages: 'zh-CN',
-          layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-        },
-        'google_translate_element'
-      );
-      window.translateReady = true;
-    }
-
-    function translateToChinese() {
-      if (!window.translateReady) {
-        alert("加载中，请稍等几秒再点一次喔~");
-        return;
-      }
-      const combo = document.querySelector('.goog-te-combo');
-      if (combo) {
-        combo.value = 'zh-CN';
-        combo.dispatchEvent(new Event('change'));
-      }
-    }
-  </script>
-  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
