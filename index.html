@@ -5,8 +5,8 @@
   <title>VelvetWhisper | Reading Universe</title>
 
   <!-- Favicon -->
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 
   <!-- SEO -->
   <meta name="description" content="VelvetWhisper - A private fiction space created by BabyAlexis, offering immersive fandom universes and soft shameful indulgence.">
@@ -100,25 +100,23 @@
 
     #music-btn {
       position: fixed;
-      bottom: 80px;
+      top: 20px;
       right: 20px;
-      background-color: #f2c2e0;
+      background-color: #fce4ec;
       color: #111;
-      font-size: 0.9em;
+      font-size: 1em;
       border: none;
-      border-radius: 50%;
-      padding: 14px;
-      width: 52px;
-      height: 52px;
+      border-radius: 8px;
+      padding: 8px 12px;
       cursor: pointer;
       z-index: 200;
-      box-shadow: 0 0 8px #f2c2e0a0;
       font-family: 'Quicksand', sans-serif;
+      box-shadow: 0 0 10px #fce4ec80;
       transition: all 0.3s ease;
     }
 
     #music-btn:hover {
-      box-shadow: 0 0 14px #f2c2e0cc;
+      box-shadow: 0 0 16px #fce4ecb3;
       transform: scale(1.05);
     }
 
@@ -147,7 +145,7 @@
       }
 
       #music-btn {
-        background-color: #e0aee0;
+        background-color: #ffe6f0;
         color: #111;
       }
     }
@@ -166,13 +164,12 @@
     ✧ 本站内容仅限个人阅读，禁止转发、截图、复制、商用。违者将永失访问权限。
   </div>
 
-  <!-- 星星按钮 -->
-  <button id="music-btn" title="Play music">⭐</button>
+  <!-- 音乐控制按钮 -->
+  <button id="music-btn">⏯️</button>
 
   <!-- 背景音乐 -->
-  <audio id="bg-music" src="/clair.mp3" preload="auto"></audio>
+  <audio id="bg-music" preload="none"></audio>
 
-  <!-- 防复制 + 播放按钮功能 -->
   <script>
     const music = document.getElementById("bg-music");
     const musicBtn = document.getElementById("music-btn");
@@ -180,18 +177,18 @@
 
     musicBtn.addEventListener("click", () => {
       if (!isPlaying) {
+        music.src = "https://ia802808.us.archive.org/26/items/ClairDeLunedebussy/2009-03-30-clairdelune_64kb.mp3";
         music.volume = 0.5;
         music.play();
-        musicBtn.innerText = "✧";
-        musicBtn.title = "Pause music";
+        musicBtn.textContent = "⏸️";
       } else {
         music.pause();
-        musicBtn.innerText = "⭐";
-        musicBtn.title = "Play music";
+        musicBtn.textContent = "⏯️";
       }
       isPlaying = !isPlaying;
     });
 
+    // 防复制/防快捷键
     document.addEventListener('contextmenu', e => e.preventDefault());
     document.addEventListener('selectstart', e => e.preventDefault());
     document.addEventListener('keydown', e => {
