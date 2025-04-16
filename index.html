@@ -3,11 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <title>VelvetWhisper | Reading Universe</title>
-  <link rel="icon" href="/favicon.png" type="image/png">
-<link rel="shortcut icon" href="/favicon.png" type="image/png">
+
+  <!-- 网站图标（已改名以绕过缓存） -->
+  <link rel="icon" href="/fav-alexis.png" type="image/png">
+  <link rel="shortcut icon" href="/fav-alexis.png" type="image/png">
+
+  <!-- SEO 信息 -->
+  <meta name="description" content="VelvetWhisper - A private fiction space created by BabyAlexis, offering immersive fandom universes and soft shameful indulgence.">
+  <meta property="og:title" content="VelvetWhisper | BabyAlexis' Private Fiction Universe">
+  <meta property="og:description" content="Enter a dreamy world of fanfiction, created by BabyAlexis. Private, soft, and only for those who understand.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/fav-alexis.png">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <!-- 引入 Quicksand 字体（按钮专用） -->
+
+  <!-- 引入按钮字体 Quicksand -->
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
 
   <style>
@@ -68,9 +78,10 @@
     }
 
     .link:hover {
-      background-color: var(--text-dark);
-      color: var(--bg-dark);
-      transform: scale(1.03);
+      background-color: #f2c2e0;
+      color: #111;
+      box-shadow: 0 0 15px #f2c2e0a5;
+      transform: scale(1.05);
     }
 
     .footer {
@@ -128,13 +139,28 @@
     ✧ 本站内容仅限个人阅读，禁止转发、截图、复制、商用。违者将永失访问权限。
   </div>
 
-  <!-- 防复制/防右键脚本 -->
+  <!-- 背景音乐 Clair de Lune -->
+  <audio id="bg-music" src="https://cdn.pixabay.com/download/audio/2023/06/04/audio_1c6f46ed7a.mp3" preload="auto"></audio>
+
+  <!-- 防复制 / 播放控制 -->
   <script>
     document.addEventListener('contextmenu', e => e.preventDefault());
     document.addEventListener('selectstart', e => e.preventDefault());
     document.addEventListener('keydown', e => {
       if (e.ctrlKey && ['c', 'u', 'a'].includes(e.key.toLowerCase())) {
         e.preventDefault();
+      }
+    });
+
+    // 页面点击后播放音乐
+    const music = document.getElementById("bg-music");
+    let hasPlayed = false;
+
+    document.body.addEventListener("click", function () {
+      if (!hasPlayed) {
+        music.volume = 0.5;
+        music.play().catch(() => {});
+        hasPlayed = true;
       }
     });
   </script>
