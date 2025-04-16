@@ -4,7 +4,10 @@
   <meta charset="UTF-8" />
   <title>VelvetWhisper | Reading Universe</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- 字体链接 -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --bg-light: #fff;
@@ -16,17 +19,15 @@
     }
 
     body {
-      font-family: 'Cormorant Garamond', serif;
-      background-color: var(--bg-dark);
-      color: var(--text-dark);
-      text-align: center;
-      padding: 60px 20px;
       margin: 0;
-      transition: all 0.3s ease;
-      animation: fadeIn 1.4s ease-in;
-      background-image: radial-gradient(circle at 50% 30%, #ffccf350 0%, #111 60%);
-      background-repeat: no-repeat;
-      background-size: cover;
+      padding: 60px 20px;
+      text-align: center;
+      font-family: 'Georgia', serif;
+      background: radial-gradient(circle at center, #2b202d, #111);
+      color: var(--text-dark);
+      animation: fadeIn 1.2s ease-in;
+      background-attachment: fixed;
+      transition: background 0.3s ease;
     }
 
     @keyframes fadeIn {
@@ -35,13 +36,15 @@
     }
 
     h1 {
-      font-size: 2.2em;
+      font-size: 2em;
       margin-bottom: 20px;
+      font-weight: normal;
     }
 
     .subtitle {
+      font-family: 'Cormorant Garamond', serif;
       font-size: 1em;
-      color: #999;
+      color: #d9a8d9;
       margin-bottom: 40px;
     }
 
@@ -50,45 +53,55 @@
       margin: 20px auto;
       font-size: 1.2em;
       text-decoration: none;
-      border: 1px solid var(--border-dark);
-      color: var(--text-dark);
+      border: 1px solid #f2c2e0;
+      color: #f2c2e0;
       padding: 14px 10px;
       width: 90%;
       max-width: 300px;
       border-radius: 12px;
-      box-shadow: 0 0 10px #f2c2e05f;
       transition: all 0.3s ease;
     }
 
     .link:hover {
-      background-color: var(--text-dark);
-      color: var(--bg-dark);
+      background-color: #f2c2e0;
+      color: #111;
       transform: scale(1.03);
     }
 
     .footer {
-      font-size: 0.8em;
-      color: #777;
       margin-top: 60px;
-      padding-bottom: 20px;
+      font-size: 0.9em;
+      line-height: 1.6;
+      color: #aaa;
     }
 
     @media (prefers-color-scheme: light) {
       body {
-        background-color: var(--bg-light);
-        color: var(--text-light);
+        background: #fff;
+        color: #111;
       }
+
       .link {
-        border-color: var(--border-light);
-        color: var(--text-light);
+        border-color: #f2c2e0;
+        color: #111;
       }
+
       .link:hover {
-        background-color: var(--text-light);
-        color: var(--bg-light);
+        background-color: #f2c2e0;
+        color: #fff;
+      }
+
+      .subtitle {
+        color: #914a91;
+      }
+
+      .footer {
+        color: #555;
       }
     }
   </style>
 </head>
+
 <body>
   <h1>Welcome to VelvetWhisper</h1>
   <p class="subtitle">written by <strong>BabyAlexis</strong> — your private storymaker 💗</p>
@@ -97,11 +110,11 @@
   <a class="link" href="/novels/cod/index.html">Call of Duty Otome Universe</a>
 
   <div class="footer">
-    ✧ All stories by BabyAlexis · For personal reading only · Do not copy, repost or share<br/>
+    ✧ All stories by BabyAlexis · For personal reading only · Do not copy, repost or share<br>
     ✧ 本站内容仅限个人阅读，禁止转发、截图、复制、商用。违者将永失访问权限。
   </div>
 
-  <!-- 防复制脚本 -->
+  <!-- 防复制/防右键脚本 -->
   <script>
     document.addEventListener('contextmenu', e => e.preventDefault());
     document.addEventListener('selectstart', e => e.preventDefault());
