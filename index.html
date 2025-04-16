@@ -156,8 +156,15 @@
   <h1>Welcome to VelvetWhisper</h1>
   <p class="subtitle">written by <strong>BabyAlexis</strong> — your private storymaker 💗</p>
 
-  <a class="link" href="/novels/transformers/index.html">Transformers Otome Universe</a>
-  <a class="link" href="/novels/cod/index.html">Call of Duty Otome Universe</a>
+  <!-- Enter按钮 -->
+  <a class="link" id="enter-btn">Enter</a>
+
+  <!-- 隐藏入口（点Enter后显示） -->
+  <div id="universe-section" style="display:none; margin-top:40px;">
+    <a class="link" href="/novels/transformers/index.html">🤖 Transformers Otome Universe · 19 Stories</a>
+    <a class="link" href="/novels/cod/index.html">🎖️ Call of Duty Otome Universe · Ongoing Series</a>
+    <a class="link" href="/faq.html">📖 FAQ · 阅读前须知</a>
+  </div>
 
   <div class="footer">
     ✧ All stories by BabyAlexis · For personal reading only · Do not copy, repost or share<br>
@@ -166,11 +173,11 @@
 
   <!-- 音乐控制按钮 -->
   <button id="music-btn">⏯️</button>
-
-  <!-- 背景音乐 -->
   <audio id="bg-music" preload="none"></audio>
 
+  <!-- 全部脚本 -->
   <script>
+    // 音乐播放
     const music = document.getElementById("bg-music");
     const musicBtn = document.getElementById("music-btn");
     let isPlaying = false;
@@ -188,13 +195,23 @@
       isPlaying = !isPlaying;
     });
 
-    // 防复制/防快捷键
+    // 防复制
     document.addEventListener('contextmenu', e => e.preventDefault());
     document.addEventListener('selectstart', e => e.preventDefault());
     document.addEventListener('keydown', e => {
       if (e.ctrlKey && ['c', 'u', 'a'].includes(e.key.toLowerCase())) {
         e.preventDefault();
       }
+    });
+
+    // 进入按钮逻辑
+    const enterBtn = document.getElementById('enter-btn');
+    const universeSection = document.getElementById('universe-section');
+
+    enterBtn.addEventListener('click', () => {
+      enterBtn.style.display = 'none';
+      universeSection.style.display = 'block';
+      universeSection.style.animation = 'fadeIn 1s ease-in';
     });
   </script>
 </body>
