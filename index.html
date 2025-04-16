@@ -4,30 +4,17 @@
   <meta charset="UTF-8" />
   <title>VelvetWhisper | Reading Universe</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- 字体链接 -->
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg-light: #fff;
-      --text-light: #111;
-      --border-light: #f2c2e0;
-      --bg-dark: #111;
-      --text-dark: #f2c2e0;
-      --border-dark: #f2c2e0;
-    }
-
     body {
       margin: 0;
-      padding: 60px 20px;
-      text-align: center;
+      padding: 60px 20px 120px;
       font-family: 'Georgia', serif;
-      background: radial-gradient(circle at center, #2b202d, #111);
-      color: var(--text-dark);
+      text-align: center;
+      background: radial-gradient(circle at center, #ffe6f2, #111 60%);
+      color: #f2c2e0;
       animation: fadeIn 1.2s ease-in;
       background-attachment: fixed;
-      transition: background 0.3s ease;
     }
 
     @keyframes fadeIn {
@@ -36,13 +23,13 @@
     }
 
     h1 {
-      font-size: 2em;
-      margin-bottom: 20px;
-      font-weight: normal;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.3em;
+      margin-bottom: 18px;
+      font-weight: 500;
     }
 
     .subtitle {
-      font-family: 'Cormorant Garamond', serif;
       font-size: 1em;
       color: #d9a8d9;
       margin-bottom: 40px;
@@ -69,10 +56,16 @@
     }
 
     .footer {
-      margin-top: 60px;
-      font-size: 0.9em;
+      position: fixed;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+      font-size: 0.85em;
       line-height: 1.6;
       color: #aaa;
+      padding: 0 20px;
+      z-index: 100;
+      background: transparent;
     }
 
     @media (prefers-color-scheme: light) {
