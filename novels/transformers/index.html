@@ -3,20 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <title>Transformers Universe | VelvetWhisper</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       padding: 60px 20px;
       font-family: 'Georgia', serif;
-      background: #111;
+      background: radial-gradient(circle at 50% 50%, rgba(40, 30, 60, 0.4) 0%, #050505 60%);
       color: #f2c2e0;
       text-align: center;
+      min-height: 100vh;
+      position: relative;
     }
 
     h1 {
       font-size: 2.2em;
-      margin-bottom: 20px;
+      margin-top: 80px;
+      margin-bottom: 40px;
     }
 
     .story {
@@ -24,7 +28,7 @@
       border-radius: 12px;
       padding: 14px;
       margin: 18px auto;
-      max-width: 400px;
+      max-width: 360px;
       background: #1a1a1a;
       box-shadow: 0 0 12px #f2c2e055;
       transition: all 0.3s ease;
@@ -46,27 +50,73 @@
       color: #d9a8d9;
     }
 
-    .nav {
-      margin-top: 40px;
+    .top-left, .top-right {
+      position: absolute;
+      top: 20px;
       font-size: 0.95em;
+      font-family: 'Quicksand', sans-serif;
     }
 
-    .nav a {
+    .top-left {
+      left: 20px;
+    }
+
+    .top-right {
+      right: 20px;
+    }
+
+    .top-left a, .top-right a {
       color: #f2c2e0;
       text-decoration: underline;
-      margin: 0 8px;
     }
 
-    .nav a:hover {
-      color: #ffffff;
+    .top-left a:hover, .top-right a:hover {
+      color: #fff;
+      text-shadow: 0 0 6px #f2c2e090;
+    }
+
+    .footer {
+      position: fixed;
+      bottom: 10px;
+      width: 100%;
+      font-size: 0.85em;
+      color: #aaa;
+      line-height: 1.5;
+    }
+
+    #music-btn {
+      position: fixed;
+      top: 20px;
+      right: 80px;
+      background-color: #fce4ec;
+      color: #111;
+      font-size: 1em;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 12px;
+      cursor: pointer;
+      font-family: 'Quicksand', sans-serif;
+      box-shadow: 0 0 10px #fce4ec80;
+      transition: all 0.3s ease;
+      z-index: 999;
+    }
+
+    #music-btn:hover {
+      box-shadow: 0 0 16px #fce4ecb3;
+      transform: scale(1.05);
     }
   </style>
 </head>
 <body>
+  <!-- 返回按钮区 -->
+  <div class="top-left"><a href="javascript:history.back()">← Back</a></div>
+  <div class="top-right"><a href="/">Home</a></div>
+
   <h1>Transformers Otome Universe</h1>
 
+  <!-- 示例作品 -->
   <div class="story">
-    <div class="title">[示例] Megatron's Mercy</div>
+    <div class="title">[示例] Megatron’s Mercy</div>
     <div class="tags">#megatron #softdom #禁锢 #崩溃感</div>
   </div>
 
@@ -75,9 +125,36 @@
     <div class="tags">#starscream #口塞play #羞耻快感 #非人调教</div>
   </div>
 
-  <div class="nav">
-    <a href="/">🏠 Return to Homepage</a>
-    <a href="/novels/index.html">🌌 Back to Universe Gate</a>
+  <!-- 音乐按钮 -->
+  <button id="music-btn">⏯️</button>
+  <audio id="bg-music" preload="auto" src="https://ia802808.us.archive.org/26/items/ClairDeLunedebussy/2009-03-30-clairdelune_64kb.mp3"></audio>
+
+  <!-- 底部版权声明 -->
+  <div class="footer">
+    ✧ All stories by BabyAlexis · For personal reading only · Do not copy, repost or share<br>
+    ✧ 本站内容仅限个人阅读，禁止转发、截图、复制、商用。违者将永失访问权限。
   </div>
+
+  <script>
+    const music = document.getElementById("bg-music");
+    const musicBtn = document.getElementById("music-btn");
+
+    if (sessionStorage.getItem("musicPlaying") === "true") {
+      music.play();
+      musicBtn.textContent = "⏸️";
+    }
+
+    musicBtn.addEventListener("click", () => {
+      if (music.paused) {
+        music.play();
+        musicBtn.textContent = "⏸️";
+        sessionStorage.setItem("musicPlaying", "true");
+      } else {
+        music.pause();
+        musicBtn.textContent = "▶️";
+        sessionStorage.setItem("musicPlaying", "false");
+      }
+    });
+  </script>
 </body>
 </html>
