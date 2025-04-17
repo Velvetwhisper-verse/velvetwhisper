@@ -16,12 +16,8 @@
       animation: fadeIn 1.4s ease-in;
       user-select: none;
       height: 100vh;
+      position: relative;
       overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 40px 20px;
     }
 
     @keyframes fadeIn {
@@ -31,6 +27,7 @@
 
     h1 {
       font-size: 2.4em;
+      margin-top: 80px;
       margin-bottom: 10px;
       font-weight: 700;
     }
@@ -55,12 +52,16 @@
       text-shadow: 0 0 6px #f2c2e0a5;
       animation: glowtext 2s infinite ease-in-out;
       cursor: pointer;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
     }
 
     #enter-btn:hover {
       color: #ffffff;
       text-shadow: 0 0 10px #ffffff, 0 0 20px #f2c2e0;
-      transform: scale(1.05);
+      transform: scale(1.05) translate(-50%, -50%);
     }
 
     @keyframes glowtext {
@@ -117,17 +118,20 @@
   <h1>Welcome to VelvetWhisper</h1>
   <p class="subtitle">written by <strong>BabyAlexis</strong> — your private storymaker 💗</p>
 
-  <a id="enter-btn">💗 Enter 💗</a>
+  <!-- ENTER 按钮（居中） -->
+  <a id="enter-btn">💗 ENTER 💗</a>
 
+  <!-- 隐藏入口区域 -->
   <div id="universe-section" style="display:none; margin-top:40px;">
     <a class="link" href="/novels/transformers/index.html">Transformers Otome Universe</a>
     <a class="link" href="/novels/cod/index.html">Call of Duty Otome Universe</a>
     <a class="link" href="/faq.html">📖 FAQ · 阅读前须知</a>
   </div>
 
-  <!-- 音乐播放器 iframe -->
+  <!-- 播放器 iFrame -->
   <iframe src="/music.html"></iframe>
 
+  <!-- Footer -->
   <div class="footer">
     ✧ All stories by BabyAlexis · For personal reading only · Do not copy, repost or share<br>
     ✧ 本站内容仅限个人阅读，禁止转发、截图、复制、商用。违者将永失访问权限。
