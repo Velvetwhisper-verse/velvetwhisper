@@ -9,8 +9,31 @@
       color: #f2c2e0;
       font-family: 'Georgia', serif;
       padding: 60px 20px 120px;
-      max-width: 800px;
+      max-width: 600px;
       margin: auto;
+    }
+
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 30px;
+    }
+
+    .nav-buttons a {
+      background-color: transparent;
+      border: 1px solid #f2c2e0;
+      color: #f2c2e0;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 0.9em;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .nav-buttons a:hover {
+      background-color: #f2c2e010;
+      box-shadow: 0 0 10px #f2c2e050;
     }
 
     h1 {
@@ -22,64 +45,44 @@
     .post {
       background-color: #151515;
       border: 1px solid #f2c2e030;
-      padding: 24px;
+      padding: 16px 20px;
       border-radius: 10px;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
       box-shadow: 0 0 10px #f2c2e012;
     }
 
     .post h3 {
-      font-size: 1.4em;
-      margin-bottom: 10px;
+      font-size: 1.2em;
+      margin-bottom: 8px;
       color: #ffd6ef;
     }
 
     .tags {
-      font-size: 0.95em;
+      font-size: 0.9em;
       color: #d9a8d9;
-      margin-bottom: 12px;
-    }
-
-    .post p {
-      line-height: 1.6;
-      white-space: pre-wrap;
-    }
-
-    .back-home {
-      display: block;
-      text-align: center;
-      margin-top: 40px;
-      font-size: 0.95em;
-      color: #aaa;
-      text-decoration: none;
-    }
-
-    .back-home:hover {
-      color: #fff;
     }
   </style>
 </head>
 <body>
+  <!-- 返回按钮 -->
+  <div class="nav-buttons">
+    <a href="/novels/index.html">← Back to Universe</a>
+    <a href="/index.html">⌂ Home</a>
+  </div>
+
   <h1>💥 Transformers Otome Universe</h1>
 
-  <!-- 🖋️ 粘贴上传生成的每一篇作品栏在下面 -->
-  <!-- 示例作品栏（可删） -->
+  <!-- ✍️ 作品栏展示区 - 粘贴在此下方 -->
   <div class="post">
     <h3>《他让我闭嘴的方法》</h3>
-    <div class="tags">#羞耻 #非自愿 #语音命令 #Starscream</div>
-    <p>“别出声。”  
-    他伸手掐住我的下巴，眼神没有一丝感情。</p>
+    <div class="tags">#羞耻 #非自愿 #Starscream</div>
   </div>
 
   <div class="post">
     <h3>《绝不允许你逃走》</h3>
-    <div class="tags">#束缚 #训练 #操控感 #Megatron</div>
-    <p>我是他从战场上带回的俘虏。  
-    也是，他亲手养成的玩具。</p>
+    <div class="tags">#束缚 #操控 #Megatron</div>
   </div>
 
-  <!-- /🖋️ End -->
-
-  <a class="back-home" href="/novels/index.html">← 返回选择宇宙</a>
+  <!-- ✍️ 上传页生成的新作品 copy 后继续粘贴到上面 👆 -->
 </body>
 </html>
