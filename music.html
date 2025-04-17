@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body { margin: 0; background: transparent; }
+    #music-btn {
+      background-color: #fce4ec;
+      color: #111;
+      font-size: 1em;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 12px;
+      cursor: pointer;
+      font-family: 'Quicksand', sans-serif;
+      box-shadow: 0 0 10px #fce4ec80;
+      transition: all 0.3s ease;
+    }
+    #music-btn:hover {
+      box-shadow: 0 0 16px #fce4ecb3;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <button id="music-btn">⏯️</button>
+  <audio id="bg-music" preload="auto" loop src="https://ia802808.us.archive.org/26/items/ClairDeLunedebussy/2009-03-30-clairdelune_64kb.mp3"></audio>
+
+  <script>
+    const music = document.getElementById("bg-music");
+    const musicBtn = document.getElementById("music-btn");
+
+    if (sessionStorage.getItem("musicPlaying") === "true") {
+      music.play();
+      musicBtn.textContent = "⏸️";
+    }
+
+    musicBtn.addEventListener("click", () => {
+      if (music.paused) {
+        music.play();
+        musicBtn.textContent = "⏸️";
+        sessionStorage.setItem("musicPlaying", "true");
+      } else {
+        music.pause();
+        musicBtn.textContent = "▶️";
+        sessionStorage.setItem("musicPlaying", "false");
+      }
+    });
+  </script>
+</body>
+</html>
