@@ -67,26 +67,6 @@
       100% { text-shadow: 0 0 4px #f2c2e060; }
     }
 
-    .btn-float {
-      position: fixed;
-      background-color: #fce4ec;
-      color: #111;
-      font-size: 0.95em;
-      border: none;
-      border-radius: 8px;
-      padding: 8px 14px;
-      font-family: 'Quicksand', sans-serif;
-      box-shadow: 0 0 10px #fce4ec80;
-      transition: all 0.3s ease;
-      cursor: pointer;
-      z-index: 999;
-    }
-
-    .btn-float:hover {
-      box-shadow: 0 0 16px #fce4ecb3;
-      transform: scale(1.05);
-    }
-
     .footer {
       position: fixed;
       bottom: 10px;
@@ -122,9 +102,17 @@
   <!-- ENTER 按钮 -->
   <a href="/novels/index.html" class="enter-btn">💗 Enter 💗</a>
 
-  <!-- 音乐播放按钮 -->
-  <button id="music-btn" class="btn-float" style="top: 20px; right: 20px;">⏯️</button>
-  <audio id="bg-music" preload="auto" src="https://ia802808.us.archive.org/26/items/ClairDeLunedebussy/2009-03-30-clairdelune_64kb.mp3"></audio>
+  <!-- 音乐 iframe（页面不刷新，音乐不中断） -->
+  <iframe src="/music.html" id="music-frame" allow="autoplay" style="
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 48px;
+    height: 36px;
+    border: none;
+    background: transparent;
+    z-index: 999;
+  "></iframe>
 
   <!-- 底部版权信息 -->
   <div class="footer">
@@ -132,29 +120,8 @@
     ✧ 本站内容仅限个人阅读，禁止转发、截图、复制、商用。违者将永失访问权限。
   </div>
 
+  <!-- 防复制机制 -->
   <script>
-    const music = document.getElementById("bg-music");
-    const musicBtn = document.getElementById("music-btn");
-
-    // 恢复播放状态
-    if (sessionStorage.getItem("musicPlaying") === "true") {
-      music.play();
-      musicBtn.textContent = "⏸️";
-    }
-
-    musicBtn.addEventListener("click", () => {
-      if (music.paused) {
-        music.play();
-        musicBtn.textContent = "⏸️";
-        sessionStorage.setItem("musicPlaying", "true");
-      } else {
-        music.pause();
-        musicBtn.textContent = "▶️";
-        sessionStorage.setItem("musicPlaying", "false");
-      }
-    });
-
-    // 防复制机制
     document.addEventListener('contextmenu', e => e.preventDefault());
     document.addEventListener('selectstart', e => e.preventDefault());
     document.addEventListener('keydown', e => {
