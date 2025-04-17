@@ -8,7 +8,6 @@
   <style>
     body {
       margin: 0;
-      padding: 60px 20px 140px;
       font-family: 'Georgia', serif;
       text-align: center;
       background: radial-gradient(circle at 50% 50%, rgba(40, 30, 60, 0.4) 0%, rgba(5, 5, 5, 1) 60%);
@@ -16,6 +15,13 @@
       background-attachment: fixed;
       animation: fadeIn 1.4s ease-in;
       user-select: none;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
     }
 
     @keyframes fadeIn {
@@ -24,21 +30,19 @@
     }
 
     h1 {
-      font-size: 2.3em;
-      margin-bottom: 18px;
+      font-size: 2.4em;
+      margin-bottom: 10px;
       font-weight: 700;
     }
 
     .subtitle {
       font-size: 1em;
       color: #d9a8d9;
-      margin-bottom: 40px;
+      margin-bottom: 50px;
     }
 
     #enter-btn {
       font-family: 'Quicksand', sans-serif;
-      display: inline-block;
-      margin: 40px auto;
       font-size: 1.5em;
       font-weight: 600;
       text-transform: uppercase;
@@ -48,7 +52,6 @@
       color: #f2c2e0;
       background-color: transparent;
       border: none;
-      box-shadow: none;
       text-shadow: 0 0 6px #f2c2e0a5;
       animation: glowtext 2s infinite ease-in-out;
       cursor: pointer;
@@ -94,6 +97,19 @@
       font-size: 0.85em;
       color: #aaa;
       line-height: 1.5;
+      text-align: center;
+      z-index: 999;
+    }
+
+    iframe {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: auto;
+      height: 40px;
+      border: none;
+      background: transparent;
+      z-index: 999;
     }
   </style>
 </head>
@@ -110,7 +126,7 @@
   </div>
 
   <!-- 音乐播放器 iframe -->
-  <iframe src="/music.html" style="position: fixed; top: 20px; right: 20px; width: auto; height: 40px; border: none; background: transparent; z-index: 999;"></iframe>
+  <iframe src="/music.html"></iframe>
 
   <div class="footer">
     ✧ All stories by BabyAlexis · For personal reading only · Do not copy, repost or share<br>
