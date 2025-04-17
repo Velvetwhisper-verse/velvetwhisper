@@ -8,7 +8,7 @@
   <style>
     body {
       margin: 0;
-      padding: 60px 20px;
+      padding: 0 20px 80px;
       font-family: 'Georgia', serif;
       background: radial-gradient(circle at 50% 50%, rgba(40, 30, 60, 0.4) 0%, #050505 60%);
       color: #f2c2e0;
@@ -18,8 +18,9 @@
     }
 
     h1 {
-      font-size: 2.2em;
-      margin: 100px auto 40px;
+      font-size: 2.4em;
+      margin-top: 80px;
+      margin-bottom: 40px;
     }
 
     .link {
@@ -65,17 +66,8 @@
       transform: scale(1.05);
     }
 
-    .footer {
-      position: fixed;
-      bottom: 10px;
-      width: 100%;
-      font-size: 0.85em;
-      color: #aaa;
-      line-height: 1.5;
-    }
-
     .faq-link {
-      margin-top: 40px;
+      margin-top: 60px;
     }
 
     .faq-link a {
@@ -89,18 +81,25 @@
       color: #ffffff;
       text-shadow: 0 0 5px #f2c2e080;
     }
+
+    .footer {
+      position: fixed;
+      bottom: 10px;
+      width: 100%;
+      font-size: 0.85em;
+      color: #aaa;
+      line-height: 1.5;
+    }
   </style>
 </head>
 <body>
+
   <!-- 左上：返回上一页 -->
-  <button class="btn-float" style="top: 20px; left: 20px;" onclick="history.back()">← Back</button>
+  <button class="btn-float" style="top: 20px; left: 20px;" onclick="history.back()">🔙</button>
 
-  <!-- 右上：返回首页 -->
-  <a href="/" class="btn-float" style="top: 20px; right: 20px;">🏠 Home</a>
-
-  <!-- 播放按钮 -->
-  <button id="music-btn" class="btn-float" style="top: 20px; right: 90px;">⏯️</button>
-  <audio id="bg-music" preload="auto" src="https://ia802808.us.archive.org/26/items/ClairDeLunedebussy/2009-03-30-clairdelune_64kb.mp3"></audio>
+  <!-- 右上：播放键 + 首页 -->
+  <button id="music-btn" class="btn-float" style="top: 20px; right: 80px;">⏯️</button>
+  <a href="/" class="btn-float" style="top: 20px; right: 20px;">🏠</a>
 
   <h1>Choose Your Universe</h1>
 
@@ -115,6 +114,8 @@
     ✧ All stories by BabyAlexis · For personal reading only · Do not copy, repost or share<br>
     ✧ 本站内容仅限个人阅读，禁止转发、截图、复制、商用。违者将永失访问权限。
   </div>
+
+  <audio id="bg-music" preload="auto" src="https://ia802808.us.archive.org/26/items/ClairDeLunedebussy/2009-03-30-clairdelune_64kb.mp3"></audio>
 
   <script>
     const music = document.getElementById("bg-music");
