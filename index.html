@@ -19,14 +19,10 @@
       color: #f2c2e0;
       text-align: center;
       height: 100vh;
-      overflow: hidden;
     }
 
-    .center-container {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+    .top-half-container {
+      margin-top: 80px;
     }
 
     h1 {
@@ -41,7 +37,8 @@
     }
 
     .enter-btn {
-      font-family: 'Quicksand', sans-serif;
+      display: inline-block;
+      margin-top: 140px;
       font-size: 1.5em;
       font-weight: 600;
       text-transform: uppercase;
@@ -49,12 +46,13 @@
       text-underline-offset: 6px;
       text-decoration-thickness: 2px;
       color: #f2c2e0;
-      background: transparent;
+      background-color: transparent;
       border: none;
-      cursor: pointer;
+      box-shadow: none;
       text-shadow: 0 0 6px #f2c2e0a5;
       animation: glowtext 2s infinite ease-in-out;
       transition: all 0.3s ease;
+      cursor: pointer;
     }
 
     .enter-btn:hover {
@@ -69,24 +67,22 @@
       100% { text-shadow: 0 0 4px #f2c2e060; }
     }
 
-    #music-btn {
+    .btn-float {
       position: fixed;
-      top: 20px;
-      right: 20px;
       background-color: #fce4ec;
       color: #111;
-      font-size: 1em;
+      font-size: 0.95em;
       border: none;
       border-radius: 8px;
-      padding: 8px 12px;
-      cursor: pointer;
+      padding: 8px 14px;
       font-family: 'Quicksand', sans-serif;
       box-shadow: 0 0 10px #fce4ec80;
       transition: all 0.3s ease;
+      cursor: pointer;
       z-index: 999;
     }
 
-    #music-btn:hover {
+    .btn-float:hover {
       box-shadow: 0 0 16px #fce4ecb3;
       transform: scale(1.05);
     }
@@ -110,11 +106,6 @@
         color: #914a91;
       }
 
-      #music-btn {
-        background-color: #ffe6f0;
-        color: #111;
-      }
-
       .footer {
         color: #555;
       }
@@ -123,15 +114,19 @@
 </head>
 
 <body>
-  <div class="center-container">
+  <div class="top-half-container">
     <h1>Welcome to VelvetWhisper</h1>
     <p class="subtitle">written by <strong>BabyAlexis</strong> — your private storymaker 💗</p>
-    <a href="/novels/index.html" class="enter-btn">💗 Enter 💗</a>
   </div>
 
-  <button id="music-btn">⏯️</button>
+  <!-- ENTER 按钮 -->
+  <a href="/novels/index.html" class="enter-btn">💗 Enter 💗</a>
+
+  <!-- 音乐播放按钮 -->
+  <button id="music-btn" class="btn-float" style="top: 20px; right: 20px;">⏯️</button>
   <audio id="bg-music" preload="auto" src="https://ia802808.us.archive.org/26/items/ClairDeLunedebussy/2009-03-30-clairdelune_64kb.mp3"></audio>
 
+  <!-- 底部版权信息 -->
   <div class="footer">
     ✧ All stories by BabyAlexis · For personal reading only · Do not copy, repost or share<br>
     ✧ 本站内容仅限个人阅读，禁止转发、截图、复制、商用。违者将永失访问权限。
