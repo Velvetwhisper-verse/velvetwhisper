@@ -3,44 +3,42 @@
 <head>
   <meta charset="UTF-8" />
   <title>VelvetWhisper | Reading Universe</title>
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="VelvetWhisper - A private fiction space created by BabyAlexis, offering immersive fandom universes and soft shameful indulgence.">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet" />
+
   <style>
     body {
       margin: 0;
-      padding: 0 20px;
       font-family: 'Georgia', serif;
-      text-align: center;
-      background: radial-gradient(circle at 50% 50%, rgba(40, 30, 60, 0.4) 0%, rgba(5, 5, 5, 1) 60%);
-      color: #f2c2e0;
+      background: radial-gradient(circle at 50% 50%, rgba(40, 30, 60, 0.4) 0%, #050505 60%);
       background-attachment: fixed;
-      animation: fadeIn 1.4s ease-in;
-      user-select: none;
-      min-height: 100vh;
-      position: relative;
+      color: #f2c2e0;
+      text-align: center;
+      height: 100vh;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    .top-half-container {
+      margin-top: 80px;
     }
 
     h1 {
-      font-size: 2.3em;
-      font-weight: 700;
-      margin-top: 80px;
+      font-size: 2.4em;
       margin-bottom: 10px;
     }
 
     .subtitle {
       font-size: 1em;
       color: #d9a8d9;
-      margin-bottom: 100px;
+      margin-bottom: 40px;
     }
 
-    #enter-btn {
-      font-family: 'Quicksand', sans-serif;
+    .enter-btn {
       display: inline-block;
+      margin-top: 140px;
       font-size: 1.5em;
       font-weight: 600;
       text-transform: uppercase;
@@ -53,44 +51,40 @@
       box-shadow: none;
       text-shadow: 0 0 6px #f2c2e0a5;
       animation: glowtext 2s infinite ease-in-out;
+      transition: all 0.3s ease;
       cursor: pointer;
-      position: absolute;
-      top: 48%;
-      left: 50%;
-      transform: translate(-50%, -50%);
     }
 
-    #enter-btn:hover {
-      color: #ffffff;
-      text-shadow: 0 0 10px #ffffff, 0 0 20px #f2c2e0;
-      transform: translate(-50%, -50%) scale(1.05);
+    .enter-btn:hover {
+      color: #fff;
+      text-shadow: 0 0 10px #fff, 0 0 20px #f2c2e0;
+      transform: scale(1.05);
     }
 
     @keyframes glowtext {
-      0% { text-shadow: 0 0 4px #f2c2e060; }
-      50% { text-shadow: 0 0 8px #f2c2e0a0; }
+      0%   { text-shadow: 0 0 4px #f2c2e060; }
+      50%  { text-shadow: 0 0 8px #f2c2e0a0; }
       100% { text-shadow: 0 0 4px #f2c2e060; }
     }
 
-    .link {
-      display: block;
-      margin: 20px auto;
-      font-size: 1.2em;
-      text-decoration: none;
-      border: 1px solid #f2c2e0;
-      color: #f2c2e0;
-      padding: 14px 10px;
-      width: 90%;
-      max-width: 300px;
-      border-radius: 12px;
-      box-shadow: 0 0 10px #f2c2e05f;
+    .btn-float {
+      position: fixed;
+      background-color: #fce4ec;
+      color: #111;
+      font-size: 0.95em;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 14px;
       font-family: 'Quicksand', sans-serif;
+      box-shadow: 0 0 10px #fce4ec80;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      z-index: 999;
     }
 
-    .link:hover {
-      background-color: #f2c2e0;
-      color: #111;
-      box-shadow: 0 0 15px #f2c2e0a5;
+    .btn-float:hover {
+      box-shadow: 0 0 16px #fce4ecb3;
+      transform: scale(1.05);
     }
 
     .footer {
@@ -102,46 +96,71 @@
       line-height: 1.5;
     }
 
-    iframe {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      width: auto;
-      height: 40px;
-      border: none;
-      background: transparent;
-      z-index: 999;
+    @media (prefers-color-scheme: light) {
+      body {
+        background: radial-gradient(circle at 50% 30%, #fff0f5 0%, #fff 40%);
+        color: #111;
+      }
+
+      .subtitle {
+        color: #914a91;
+      }
+
+      .footer {
+        color: #555;
+      }
     }
   </style>
 </head>
+
 <body>
-  <h1>Welcome to VelvetWhisper</h1>
-  <p class="subtitle">written by <strong>BabyAlexis</strong> — your private storymaker </p>
-
-  <a id="enter-btn">💗 ENTER 💗</a>
-
-  <div id="universe-section" style="display:none; margin-top:40px;">
-    <a class="link" href="/novels/transformers/index.html">Transformers Otome Universe</a>
-    <a class="link" href="/novels/cod/index.html">Call of Duty Otome Universe</a>
-    <a class="link" href="/faq.html">📖 FAQ · 阅读前须知</a>
+  <div class="top-half-container">
+    <h1>Welcome to VelvetWhisper</h1>
+    <p class="subtitle">written by <strong>BabyAlexis</strong> — your private storymaker 💗</p>
   </div>
 
-  <!-- 播放按钮 iframe（右上角） -->
-  <iframe src="/music.html" title="bg-music"></iframe>
+  <!-- ENTER 按钮 -->
+  <a href="/novels/index.html" class="enter-btn">💗 Enter 💗</a>
 
+  <!-- 音乐播放按钮 -->
+  <button id="music-btn" class="btn-float" style="top: 20px; right: 20px;">⏯️</button>
+  <audio id="bg-music" preload="auto" src="https://ia802808.us.archive.org/26/items/ClairDeLunedebussy/2009-03-30-clairdelune_64kb.mp3"></audio>
+
+  <!-- 底部版权信息 -->
   <div class="footer">
     ✧ All stories by BabyAlexis · For personal reading only · Do not copy, repost or share<br>
     ✧ 本站内容仅限个人阅读，禁止转发、截图、复制、商用。违者将永失访问权限。
   </div>
 
   <script>
-    const enterBtn = document.getElementById('enter-btn');
-    const universeSection = document.getElementById('universe-section');
+    const music = document.getElementById("bg-music");
+    const musicBtn = document.getElementById("music-btn");
 
-    enterBtn.addEventListener('click', () => {
-      enterBtn.style.display = 'none';
-      universeSection.style.display = 'block';
-      universeSection.style.animation = 'fadeIn 1s ease-in';
+    // 恢复播放状态
+    if (sessionStorage.getItem("musicPlaying") === "true") {
+      music.play();
+      musicBtn.textContent = "⏸️";
+    }
+
+    musicBtn.addEventListener("click", () => {
+      if (music.paused) {
+        music.play();
+        musicBtn.textContent = "⏸️";
+        sessionStorage.setItem("musicPlaying", "true");
+      } else {
+        music.pause();
+        musicBtn.textContent = "▶️";
+        sessionStorage.setItem("musicPlaying", "false");
+      }
+    });
+
+    // 防复制机制
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('selectstart', e => e.preventDefault());
+    document.addEventListener('keydown', e => {
+      if (e.ctrlKey && ['c', 'u', 'a'].includes(e.key.toLowerCase())) {
+        e.preventDefault();
+      }
     });
   </script>
 </body>
