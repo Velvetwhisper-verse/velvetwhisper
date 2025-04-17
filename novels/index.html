@@ -102,9 +102,20 @@
   <!-- 左上：返回上一页 -->
   <button class="btn-float" style="top: 20px; left: 20px;" onclick="history.back()">🔙</button>
 
-  <!-- 右上：播放键 + 首页 -->
-  <button id="music-btn" class="btn-float" style="top: 20px; right: 80px;">⏯️</button>
+  <!-- 右上：Home键 -->
   <button onclick="location.href='/'" class="btn-float" style="top: 20px; right: 20px;">🏠</button>
+
+  <!-- 音乐播放 iframe（和首页共享播放器） -->
+  <iframe src="/music.html" id="music-frame" allow="autoplay" style="
+    position: fixed;
+    top: 20px;
+    right: 80px;
+    width: 48px;
+    height: 36px;
+    border: none;
+    background: transparent;
+    z-index: 999;
+  "></iframe>
 
   <h1>Choose Your Universe</h1>
 
@@ -120,28 +131,5 @@
     ✧ 本站内容仅限个人阅读，禁止转发、截图、复制、商用。违者将永失访问权限。
   </div>
 
-  <audio id="bg-music" preload="auto" src="https://ia802808.us.archive.org/26/items/ClairDeLunedebussy/2009-03-30-clairdelune_64kb.mp3"></audio>
-
-  <script>
-    const music = document.getElementById("bg-music");
-    const musicBtn = document.getElementById("music-btn");
-
-    if (sessionStorage.getItem("musicPlaying") === "true") {
-      music.play();
-      musicBtn.textContent = "⏸️";
-    }
-
-    musicBtn.addEventListener("click", () => {
-      if (music.paused) {
-        music.play();
-        musicBtn.textContent = "⏸️";
-        sessionStorage.setItem("musicPlaying", "true");
-      } else {
-        music.pause();
-        musicBtn.textContent = "▶️";
-        sessionStorage.setItem("musicPlaying", "false");
-      }
-    });
-  </script>
 </body>
 </html>
