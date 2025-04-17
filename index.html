@@ -53,33 +53,16 @@
       font-weight: 700;
     }
 
+    .subtitle {
+      font-size: 1em;
+      color: #d9a8d9;
+      margin-bottom: 40px;
+    }
+
     .link {
       font-family: 'Quicksand', sans-serif;
-      display: block;
-      margin: 20px auto;
-      font-size: 1.2em;
-      text-decoration: none;
-      border: 1px solid var(--border-dark);
-      color: var(--text-dark);
-      padding: 14px 10px;
-      width: 90%;
-      max-width: 300px;
-      border-radius: 12px;
-      box-shadow: 0 0 10px #f2c2e05f;
-      transition: all 0.3s ease;
-    }
-
-    .link:hover {
-      background-color: #f2c2e0;
-      color: #111;
-      box-shadow: 0 0 15px #f2c2e0a5;
-      transform: scale(1.05);
-    }
-
-    #enter-btn {
-      font-family: 'Quicksand', sans-serif;
       display: inline-block;
-      margin: 40px auto;
+      margin: 20px auto;
       font-size: 1.5em;
       font-weight: 600;
       text-transform: uppercase;
@@ -94,9 +77,10 @@
       animation: glowtext 2s infinite ease-in-out;
       transition: all 0.3s ease;
       cursor: pointer;
+      text-align: center;
     }
 
-    #enter-btn:hover {
+    .link:hover {
       color: #ffffff;
       text-shadow: 0 0 10px #ffffff, 0 0 20px #f2c2e0;
       transform: scale(1.05);
@@ -152,14 +136,8 @@
         color: var(--text-light);
       }
 
-      .link {
-        border-color: var(--border-light);
-        color: var(--text-light);
-      }
-
-      .link:hover {
-        background-color: var(--text-light);
-        color: var(--bg-light);
+      .subtitle {
+        color: #914a91;
       }
 
       .footer {
@@ -177,15 +155,9 @@
 <body>
   <h1>Welcome to VelvetWhisper</h1>
   <p class="subtitle">written by <strong>BabyAlexis</strong> — your private storymaker 💗</p>
-  <!-- Enter按钮 -->
-  <a id="enter-btn">💗 Enter 💗</a>
 
-  <!-- 隐藏入口（点Enter后显示） -->
-  <div id="universe-section" style="display:none; margin-top:40px;">
-    <a class="link" href="/novels/transformers/index.html">Transformers Otome Universe</a>
-    <a class="link" href="/novels/cod/index.html">Call of Duty Otome Universe</a>
-    <a class="link" href="/faq.html">📖 FAQ · 阅读前须知</a>
-  </div>
+  <!-- Enter按钮 -->
+  <a class="link" href="/novels/index.html" id="enter-btn">💗 Enter 💗</a>
 
   <div class="footer">
     ✧ All stories by BabyAlexis · For personal reading only · Do not copy, repost or share<br>
@@ -214,23 +186,13 @@
       isPlaying = !isPlaying;
     });
 
-    // 防复制
+    // 防复制机制
     document.addEventListener('contextmenu', e => e.preventDefault());
     document.addEventListener('selectstart', e => e.preventDefault());
     document.addEventListener('keydown', e => {
       if (e.ctrlKey && ['c', 'u', 'a'].includes(e.key.toLowerCase())) {
         e.preventDefault();
       }
-    });
-
-    // 进入按钮逻辑
-    const enterBtn = document.getElementById('enter-btn');
-    const universeSection = document.getElementById('universe-section');
-
-    enterBtn.addEventListener('click', () => {
-      enterBtn.style.display = 'none';
-      universeSection.style.display = 'block';
-      universeSection.style.animation = 'fadeIn 1s ease-in';
     });
   </script>
 </body>
