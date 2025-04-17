@@ -8,7 +8,7 @@
   <style>
     body {
       margin: 0;
-      padding: 60px 20px;
+      padding: 0 20px 80px;
       font-family: 'Georgia', serif;
       background: radial-gradient(circle at 50% 50%, rgba(40, 30, 60, 0.4) 0%, #050505 60%);
       color: #f2c2e0;
@@ -18,61 +18,63 @@
     }
 
     h1 {
-      font-size: 2.2em;
+      font-size: 2.4em;
       margin-top: 80px;
       margin-bottom: 40px;
     }
 
-    .story {
+    .story-card {
       border: 1px solid #f2c2e0;
       border-radius: 12px;
-      padding: 14px;
-      margin: 18px auto;
+      padding: 16px;
+      margin: 20px auto;
+      width: 90%;
       max-width: 360px;
-      background: #1a1a1a;
-      box-shadow: 0 0 12px #f2c2e055;
+      text-align: left;
+      box-shadow: 0 0 10px #f2c2e05f;
       transition: all 0.3s ease;
-    }
-
-    .story:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 16px #f2c2e099;
-    }
-
-    .title {
-      font-size: 1.2em;
-      font-weight: bold;
-      margin-bottom: 6px;
-    }
-
-    .tags {
-      font-size: 0.9em;
-      color: #d9a8d9;
-    }
-
-    .top-left, .top-right {
-      position: absolute;
-      top: 20px;
-      font-size: 0.95em;
       font-family: 'Quicksand', sans-serif;
     }
 
-    .top-left {
-      left: 20px;
+    .story-card:hover {
+      background-color: #f2c2e015;
+      box-shadow: 0 0 16px #f2c2e080;
     }
 
-    .top-right {
-      right: 20px;
+    .story-title {
+      font-weight: bold;
+      font-size: 1.2em;
+      margin-bottom: 6px;
     }
 
-    .top-left a, .top-right a {
-      color: #f2c2e0;
-      text-decoration: underline;
+    .story-tags {
+      font-size: 0.95em;
+      color: #d9a8d9;
     }
 
-    .top-left a:hover, .top-right a:hover {
-      color: #fff;
-      text-shadow: 0 0 6px #f2c2e090;
+    .btn-float {
+      position: fixed;
+      background-color: #fce4ec;
+      color: #111;
+      font-size: 1em;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 12px;
+      cursor: pointer;
+      z-index: 999;
+      font-family: 'Quicksand', sans-serif;
+      box-shadow: 0 0 10px #fce4ec80;
+      transition: all 0.3s ease;
+      display: inline-block;
+      text-align: center;
+      line-height: 1;
+      height: 36px;
+      min-width: 36px;
+    }
+
+    .btn-float:hover {
+      box-shadow: 0 0 16px #fce4ecb3;
+      transform: scale(1.05);
     }
 
     .footer {
@@ -83,57 +85,36 @@
       color: #aaa;
       line-height: 1.5;
     }
-
-    #music-btn {
-      position: fixed;
-      top: 20px;
-      right: 80px;
-      background-color: #fce4ec;
-      color: #111;
-      font-size: 1em;
-      border: none;
-      border-radius: 8px;
-      padding: 8px 12px;
-      cursor: pointer;
-      font-family: 'Quicksand', sans-serif;
-      box-shadow: 0 0 10px #fce4ec80;
-      transition: all 0.3s ease;
-      z-index: 999;
-    }
-
-    #music-btn:hover {
-      box-shadow: 0 0 16px #fce4ecb3;
-      transform: scale(1.05);
-    }
   </style>
 </head>
 <body>
-  <!-- 返回按钮区 -->
-  <div class="top-left"><a href="javascript:history.back()">← Back</a></div>
-  <div class="top-right"><a href="/">Home</a></div>
+
+  <!-- 左上：返回上一页 -->
+  <button class="btn-float" style="top: 20px; left: 20px;" onclick="history.back()">🔙</button>
+
+  <!-- 右上：播放键 + 首页 -->
+  <button id="music-btn" class="btn-float" style="top: 20px; right: 80px;">⏯️</button>
+  <button onclick="location.href='/'" class="btn-float" style="top: 20px; right: 20px;">🏠</button>
 
   <h1>Transformers Otome Universe</h1>
 
-  <!-- 示例作品 -->
-  <div class="story">
-    <div class="title">[示例] Megatron’s Mercy</div>
-    <div class="tags">#megatron #softdom #禁锢 #崩溃感</div>
+  <!-- 示例作品：可复制增加 -->
+  <div class="story-card">
+    <div class="story-title">Spark in the Steel</div>
+    <div class="story-tags">Megatron x Reader · Hurt/Comfort · NSFW</div>
   </div>
 
-  <div class="story">
-    <div class="title">[示例] Starscream’s Pet</div>
-    <div class="tags">#starscream #口塞play #羞耻快感 #非人调教</div>
+  <div class="story-card">
+    <div class="story-title">Locked Circuit</div>
+    <div class="story-tags">Starscream x Reader · Psychological · Angst</div>
   </div>
 
-  <!-- 音乐按钮 -->
-  <button id="music-btn">⏯️</button>
-  <audio id="bg-music" preload="auto" src="https://ia802808.us.archive.org/26/items/ClairDeLunedebussy/2009-03-30-clairdelune_64kb.mp3"></audio>
-
-  <!-- 底部版权声明 -->
   <div class="footer">
     ✧ All stories by BabyAlexis · For personal reading only · Do not copy, repost or share<br>
     ✧ 本站内容仅限个人阅读，禁止转发、截图、复制、商用。违者将永失访问权限。
   </div>
+
+  <audio id="bg-music" preload="auto" src="https://ia802808.us.archive.org/26/items/ClairDeLunedebussy/2009-03-30-clairdelune_64kb.mp3"></audio>
 
   <script>
     const music = document.getElementById("bg-music");
