@@ -4,53 +4,34 @@
   <meta charset="UTF-8" />
   <title>VelvetWhisper | Reading Universe</title>
 
-  <!-- Favicon -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="VelvetWhisper - A private fiction space created by BabyAlexis, offering immersive fandom universes and soft shameful indulgence.">
   <link rel="icon" href="/favicon.ico" type="image/x-icon" />
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-
-  <!-- SEO -->
-  <meta name="description" content="VelvetWhisper - A private fiction space created by BabyAlexis, offering immersive fandom universes and soft shameful indulgence.">
-  <meta property="og:title" content="VelvetWhisper | BabyAlexis' Private Fiction Universe">
-  <meta property="og:description" content="Enter a dreamy world of fanfiction, created by BabyAlexis. Private, soft, and only for those who understand.">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="/favicon.ico">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet" />
 
   <style>
-    :root {
-      --bg-light: #fff;
-      --text-light: #111;
-      --border-light: #f2c2e0;
-      --bg-dark: #111;
-      --text-dark: #f2c2e0;
-      --border-dark: #f2c2e0;
-    }
-
     body {
       margin: 0;
-      padding: 60px 20px 140px;
       font-family: 'Georgia', serif;
-      text-align: center;
-      color: var(--text-dark);
-      background: radial-gradient(circle at 50% 50%, rgba(40, 30, 60, 0.4) 0%, rgba(5, 5, 5, 1) 60%);
+      background: radial-gradient(circle at 50% 50%, rgba(40, 30, 60, 0.4) 0%, #050505 60%);
       background-attachment: fixed;
-      animation: fadeIn 1.4s ease-in;
-      user-select: none;
-      transition: all 0.3s ease;
+      color: #f2c2e0;
+      text-align: center;
+      height: 100vh;
+      overflow: hidden;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    .center-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
 
     h1 {
-      font-family: 'Georgia', serif;
-      font-size: 2.3em;
-      margin-bottom: 18px;
-      font-weight: 700;
+      font-size: 2.4em;
+      margin-bottom: 10px;
     }
 
     .subtitle {
@@ -59,10 +40,8 @@
       margin-bottom: 40px;
     }
 
-    .link {
+    .enter-btn {
       font-family: 'Quicksand', sans-serif;
-      display: inline-block;
-      margin: 20px auto;
       font-size: 1.5em;
       font-weight: 600;
       text-transform: uppercase;
@@ -70,19 +49,17 @@
       text-underline-offset: 6px;
       text-decoration-thickness: 2px;
       color: #f2c2e0;
-      background-color: transparent;
+      background: transparent;
       border: none;
-      box-shadow: none;
+      cursor: pointer;
       text-shadow: 0 0 6px #f2c2e0a5;
       animation: glowtext 2s infinite ease-in-out;
       transition: all 0.3s ease;
-      cursor: pointer;
-      text-align: center;
     }
 
-    .link:hover {
-      color: #ffffff;
-      text-shadow: 0 0 10px #ffffff, 0 0 20px #f2c2e0;
+    .enter-btn:hover {
+      color: #fff;
+      text-shadow: 0 0 10px #fff, 0 0 20px #f2c2e0;
       transform: scale(1.05);
     }
 
@@ -90,22 +67,6 @@
       0%   { text-shadow: 0 0 4px #f2c2e060; }
       50%  { text-shadow: 0 0 8px #f2c2e0a0; }
       100% { text-shadow: 0 0 4px #f2c2e060; }
-    }
-
-    .footer {
-      position: fixed;
-      bottom: 10px;
-      left: 0;
-      width: 100%;
-      max-width: 95vw;
-      margin: 0 auto;
-      text-align: center;
-      font-size: 0.85em;
-      line-height: 1.6;
-      color: #aaa;
-      padding: 0 10px;
-      word-break: break-word;
-      z-index: 100;
     }
 
     #music-btn {
@@ -119,10 +80,10 @@
       border-radius: 8px;
       padding: 8px 12px;
       cursor: pointer;
-      z-index: 200;
       font-family: 'Quicksand', sans-serif;
       box-shadow: 0 0 10px #fce4ec80;
       transition: all 0.3s ease;
+      z-index: 999;
     }
 
     #music-btn:hover {
@@ -130,60 +91,72 @@
       transform: scale(1.05);
     }
 
+    .footer {
+      position: fixed;
+      bottom: 10px;
+      width: 100%;
+      font-size: 0.85em;
+      color: #aaa;
+      line-height: 1.5;
+    }
+
     @media (prefers-color-scheme: light) {
       body {
         background: radial-gradient(circle at 50% 30%, #fff0f5 0%, #fff 40%);
-        color: var(--text-light);
+        color: #111;
       }
 
       .subtitle {
         color: #914a91;
       }
 
-      .footer {
-        color: #555;
-      }
-
       #music-btn {
         background-color: #ffe6f0;
         color: #111;
+      }
+
+      .footer {
+        color: #555;
       }
     }
   </style>
 </head>
 
 <body>
-  <h1>Welcome to VelvetWhisper</h1>
-  <p class="subtitle">written by <strong>BabyAlexis</strong> — your private storymaker 💗</p>
+  <div class="center-container">
+    <h1>Welcome to VelvetWhisper</h1>
+    <p class="subtitle">written by <strong>BabyAlexis</strong> — your private storymaker 💗</p>
+    <a href="/novels/index.html" class="enter-btn">💗 Enter 💗</a>
+  </div>
 
-  <!-- Enter按钮 -->
-  <a class="link" href="/novels/index.html" id="enter-btn">💗 Enter 💗</a>
+  <button id="music-btn">⏯️</button>
+  <audio id="bg-music" preload="auto" src="https://ia802808.us.archive.org/26/items/ClairDeLunedebussy/2009-03-30-clairdelune_64kb.mp3"></audio>
 
   <div class="footer">
     ✧ All stories by BabyAlexis · For personal reading only · Do not copy, repost or share<br>
     ✧ 本站内容仅限个人阅读，禁止转发、截图、复制、商用。违者将永失访问权限。
   </div>
 
-  <!-- 音乐控制按钮 -->
-  <button id="music-btn">⏯️</button>
-  <audio id="bg-music" preload="none"></audio>
-
   <script>
     const music = document.getElementById("bg-music");
     const musicBtn = document.getElementById("music-btn");
-    let isPlaying = false;
+
+    // 恢复播放状态
+    if (sessionStorage.getItem("musicPlaying") === "true") {
+      music.play();
+      musicBtn.textContent = "⏸️";
+    }
 
     musicBtn.addEventListener("click", () => {
-      if (!isPlaying) {
-        music.src = "https://ia802808.us.archive.org/26/items/ClairDeLunedebussy/2009-03-30-clairdelune_64kb.mp3";
-        music.volume = 0.5;
+      if (music.paused) {
         music.play();
         musicBtn.textContent = "⏸️";
+        sessionStorage.setItem("musicPlaying", "true");
       } else {
         music.pause();
         musicBtn.textContent = "▶️";
+        sessionStorage.setItem("musicPlaying", "false");
       }
-      isPlaying = !isPlaying;
     });
 
     // 防复制机制
