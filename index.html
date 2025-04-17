@@ -53,12 +53,6 @@
       font-weight: 700;
     }
 
-    .subtitle {
-      font-size: 1em;
-      color: #d9a8d9;
-      margin-bottom: 40px;
-    }
-
     .link {
       font-family: 'Quicksand', sans-serif;
       display: block;
@@ -82,38 +76,37 @@
       transform: scale(1.05);
     }
 
-    /* 独立 enter 按钮样式 */
     #enter-btn {
-  font-family: 'Quicksand', sans-serif;
-  display: inline-block;
-  margin: 40px auto;
-  font-size: 1.5em;
-  font-weight: 600;
-  text-transform: uppercase;
-  text-decoration: underline;
-  text-underline-offset: 6px;
-  text-decoration-thickness: 2px;
-  color: #f2c2e0;
-  background-color: transparent;
-  border: none;
-  box-shadow: none;
-  text-shadow: 0 0 6px #f2c2e0a5;
-  animation: glowtext 2s infinite ease-in-out;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
+      font-family: 'Quicksand', sans-serif;
+      display: inline-block;
+      margin: 40px auto;
+      font-size: 1.5em;
+      font-weight: 600;
+      text-transform: uppercase;
+      text-decoration: underline;
+      text-underline-offset: 6px;
+      text-decoration-thickness: 2px;
+      color: #f2c2e0;
+      background-color: transparent;
+      border: none;
+      box-shadow: none;
+      text-shadow: 0 0 6px #f2c2e0a5;
+      animation: glowtext 2s infinite ease-in-out;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
 
-#enter-btn:hover {
-  color: #ffffff;
-  text-shadow: 0 0 10px #ffffff, 0 0 20px #f2c2e0;
-  transform: scale(1.05);
-}
+    #enter-btn:hover {
+      color: #ffffff;
+      text-shadow: 0 0 10px #ffffff, 0 0 20px #f2c2e0;
+      transform: scale(1.05);
+    }
 
-@keyframes glowtext {
-  0%   { text-shadow: 0 0 4px #f2c2e060; }
-  50%  { text-shadow: 0 0 8px #f2c2e0a0; }
-  100% { text-shadow: 0 0 4px #f2c2e060; }
-}
+    @keyframes glowtext {
+      0%   { text-shadow: 0 0 4px #f2c2e060; }
+      50%  { text-shadow: 0 0 8px #f2c2e0a0; }
+      100% { text-shadow: 0 0 4px #f2c2e060; }
+    }
 
     .footer {
       position: fixed;
@@ -169,10 +162,6 @@
         color: var(--bg-light);
       }
 
-      .subtitle {
-        color: #914a91;
-      }
-
       .footer {
         color: #555;
       }
@@ -186,15 +175,15 @@
 </head>
 
 <body>
-  <h1>Choose Your Universe</h1>
-  
+  <h1>Welcome to VelvetWhisper</h1>
+
   <!-- Enter按钮 -->
   <a id="enter-btn">💗 Enter 💗</a>
 
   <!-- 隐藏入口（点Enter后显示） -->
   <div id="universe-section" style="display:none; margin-top:40px;">
-    <a class="link" href="/novels/transformers/index.html"> Transformers Otome Universe </a>
-    <a class="link" href="/novels/cod/index.html">Call of Duty Otome Universe </a>
+    <a class="link" href="/novels/transformers/index.html">Transformers Otome Universe</a>
+    <a class="link" href="/novels/cod/index.html">Call of Duty Otome Universe</a>
     <a class="link" href="/faq.html">📖 FAQ · 阅读前须知</a>
   </div>
 
@@ -207,9 +196,7 @@
   <button id="music-btn">⏯️</button>
   <audio id="bg-music" preload="none"></audio>
 
-  <!-- 全部脚本 -->
   <script>
-    // 音乐播放
     const music = document.getElementById("bg-music");
     const musicBtn = document.getElementById("music-btn");
     let isPlaying = false;
