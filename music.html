@@ -17,7 +17,6 @@
       justify-content: center;
       border: none;
       border-radius: 8px;
-      padding: 0;
       cursor: pointer;
       font-family: 'Quicksand', sans-serif;
       box-shadow: 0 0 10px #fce4ec80;
@@ -25,11 +24,28 @@
       width: 48px;
       height: 36px;
       line-height: 1;
+      animation: idleGlow 2s infinite ease-in-out;
     }
 
     #music-btn:hover {
       box-shadow: 0 0 16px #fce4ecb3;
       transform: scale(1.05);
+    }
+
+    .pulse {
+      animation: clickPulse 0.4s ease-in-out;
+    }
+
+    @keyframes idleGlow {
+      0%   { box-shadow: 0 0 6px #fce4ec60; }
+      50%  { box-shadow: 0 0 10px #fce4ecb0; }
+      100% { box-shadow: 0 0 6px #fce4ec60; }
+    }
+
+    @keyframes clickPulse {
+      0%   { transform: scale(1); box-shadow: 0 0 8px #fff4f7; }
+      50%  { transform: scale(1.15); box-shadow: 0 0 20px #ffffffcc; }
+      100% { transform: scale(1); box-shadow: 0 0 10px #fce4ecb0; }
     }
   </style>
 </head>
@@ -41,22 +57,23 @@
     const music = document.getElementById("bg-music");
     const musicBtn = document.getElementById("music-btn");
 
-    const shouldPlay = sessionStorage.getItem("musicPlaying") === "true";
-    if (shouldPlay) musicBtn.textContent = "⏸️";
+    function pulseEffect() {
+      musicBtn.classList.add("pulse");
+      setTimeout(() => musicBtn.classList.remove("pulse"), 400);
+    }
 
     musicBtn.addEventListener("click", () => {
       if (music.paused) {
         music.play();
-        musicBtn.textContent = "⏸️";
         sessionStorage.setItem("musicPlaying", "true");
       } else {
         music.pause();
-        musicBtn.textContent = "🎵";
         sessionStorage.setItem("musicPlaying", "false");
       }
+      pulseEffect();
     });
 
-    // 用户首次点击页面后尝试恢复播放（避免被浏览器阻止）
+    // 恢复播放状态（不改变图标）
     window.addEventListener('click', () => {
       if (sessionStorage.getItem("musicPlaying") === "true" && music.paused) {
         music.play().catch(() => {});
