@@ -50,6 +50,15 @@
       margin-bottom: 6px;
     }
 
+    .story-title a {
+      color: #f2c2e0;
+      text-decoration: none;
+    }
+
+    .story-title a:hover {
+      text-decoration: underline;
+    }
+
     .story-tags {
       font-size: 0.95em;
       color: #d9a8d9;
@@ -62,9 +71,6 @@
       align-items: center;
       padding: 16px 20px 0;
       box-sizing: border-box;
-      position: relative;
-      top: 0;
-      left: 0;
     }
 
     .btn-float {
@@ -101,7 +107,7 @@
 </head>
 <body>
 
-  <!-- 顶部按钮区：返回 + 首页 -->
+  <!-- 顶部按钮 -->
   <div class="btn-area">
     <button class="btn-float" onclick="history.back()">🔙</button>
     <button class="btn-float" onclick="location.href='/'">🏠</button>
@@ -109,21 +115,47 @@
 
   <h1>Transformers Otome Universe</h1>
 
-  <!-- 示例作品 -->
-  <div class="story-card">
-    <div class="story-title">Spark in the Steel</div>
-    <div class="story-tags">Megatron x Reader · Hurt/Comfort · NSFW</div>
-  </div>
-
-  <div class="story-card">
-    <div class="story-title">Locked Circuit</div>
-    <div class="story-tags">Starscream x Reader · Psychological · Angst</div>
-  </div>
+  <!-- 🪄 自动生成 story-cards -->
+  <div id="story-list"></div>
 
   <div class="footer">
     ✧ All stories by BabyAlexis · For personal reading only · Do not copy, repost or share<br>
     ✧ 本站内容仅限个人阅读，禁止转发、截图、复制、商用。违者将永失访问权限。
   </div>
+
+  <script>
+    const repo = 'Velvetwhisper-verse';
+    const folder = 'novels/transformers';
+    const apiUrl = `https://api.github.com/repos/${repo}/${folder}/contents/`;
+
+    fetch(apiUrl)
+      .then(response => response.json())
+      .then(files => {
+        files
+          .filter(file => file.name.endsWith('.md'))
+          .sort((a, b) => b.name.localeCompare(a.name)) // 时间倒序
+          .forEach(file => {
+            fetch(file.download_url)
+              .then(res => res.text())
+              .then(content => {
+                const titleMatch = content.match(/^# (.+)/);
+                const tagMatch = content.match(/\*\*关键词：\*\* (.+)/);
+                const title = titleMatch ? titleMatch[1] : file.name;
+                const tags = tagMatch ? tagMatch[1] : '—';
+
+                const card = document.createElement('div');
+                card.className = 'story-card';
+                card.innerHTML = `
+                  <div class="story-title">
+                    <a href="${file.download_url}" target="_blank">${title}</a>
+                  </div>
+                  <div class="story-tags">${tags}</div>
+                `;
+                document.getElementById('story-list').appendChild(card);
+              });
+          });
+      });
+  </script>
 
 </body>
 </html>
