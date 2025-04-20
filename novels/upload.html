@@ -267,7 +267,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const repo = 'Velvetwhisper';
       const owner = 'Velvetwhisper-verse';
-      const path = `novels/${filename}`;
+      const folder = category.toLowerCase().replace(/\s+/g, '').replace(/[^\w\-]/g, '');
+      const path = `novels/${folder}/${filename}`;
 
 
       try {
