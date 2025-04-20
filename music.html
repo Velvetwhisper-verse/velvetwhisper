@@ -9,43 +9,33 @@
     }
 
     #music-btn {
-      background: transparent; /* 透明背景 */
-      color: #fce4ec;
+      background: transparent;     /* 完全透明背景 */
+      border: none;                /* 无边框 */
+      color: #f2c2e0;              /* 音符颜色 */
       font-size: 1.4em;
+      line-height: 1;
+      width: 48px;
+      height: 36px;
+      cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
       font-family: 'Quicksand', sans-serif;
-      box-shadow: 0 0 10px #fce4ec80;
-      transition: all 0.3s ease;
-      width: 48px;
-      height: 36px;
-      line-height: 1;
-      animation: idleGlow 2s infinite ease-in-out;
+      transition: transform 0.2s ease;
     }
 
     #music-btn:hover {
-      box-shadow: 0 0 16px #fce4ecb3;
-      transform: scale(1.05);
+      transform: scale(1.1);
     }
 
     .pulse {
       animation: clickPulse 0.4s ease-in-out;
     }
 
-    @keyframes idleGlow {
-      0%   { box-shadow: 0 0 6px #fce4ec60; }
-      50%  { box-shadow: 0 0 10px #fce4ecb0; }
-      100% { box-shadow: 0 0 6px #fce4ec60; }
-    }
-
     @keyframes clickPulse {
-      0%   { transform: scale(1); box-shadow: 0 0 8px #fff4f7; }
-      50%  { transform: scale(1.15); box-shadow: 0 0 20px #ffffffcc; }
-      100% { transform: scale(1); box-shadow: 0 0 10px #fce4ecb0; }
+      0%   { transform: scale(1); }
+      50%  { transform: scale(1.2); }
+      100% { transform: scale(1); }
     }
   </style>
 </head>
@@ -73,7 +63,7 @@
       pulseEffect();
     });
 
-    // 恢复播放状态
+    // 恢复播放状态（防止自动播放限制）
     window.addEventListener('click', () => {
       if (sessionStorage.getItem("musicPlaying") === "true" && music.paused) {
         music.play().catch(() => {});
