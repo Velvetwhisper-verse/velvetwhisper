@@ -11,18 +11,20 @@
     #music-btn {
       background-color: #fce4ec;
       color: #111;
-      font-size: 1.2em;
-      line-height: 1;   /* 控制文字垂直间距 */
-      vertical-align: middle; /* 强制emoji居中显示 */
+      font-size: 1.4em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       border: none;
       border-radius: 8px;
-      padding: 6px 12px;
+      padding: 0;
       cursor: pointer;
       font-family: 'Quicksand', sans-serif;
       box-shadow: 0 0 10px #fce4ec80;
       transition: all 0.3s ease;
       width: 48px;
       height: 36px;
+      line-height: 1;
     }
 
     #music-btn:hover {
@@ -32,7 +34,7 @@
   </style>
 </head>
 <body>
-  <button id="music-btn">⏯️</button>
+  <button id="music-btn">🎵</button>
   <audio id="bg-music" preload="auto" loop src="https://ia802808.us.archive.org/26/items/ClairDeLunedebussy/2009-03-30-clairdelune_64kb.mp3"></audio>
 
   <script>
@@ -40,10 +42,7 @@
     const musicBtn = document.getElementById("music-btn");
 
     const shouldPlay = sessionStorage.getItem("musicPlaying") === "true";
-
-    if (shouldPlay) {
-      musicBtn.textContent = "⏸️";
-    }
+    if (shouldPlay) musicBtn.textContent = "⏸️";
 
     musicBtn.addEventListener("click", () => {
       if (music.paused) {
@@ -52,12 +51,12 @@
         sessionStorage.setItem("musicPlaying", "true");
       } else {
         music.pause();
-        musicBtn.textContent = "⏯️";
+        musicBtn.textContent = "🎵";
         sessionStorage.setItem("musicPlaying", "false");
       }
     });
 
-    // 手动播放触发（避免自动播放限制）
+    // 用户首次点击页面后尝试恢复播放（避免被浏览器阻止）
     window.addEventListener('click', () => {
       if (sessionStorage.getItem("musicPlaying") === "true" && music.paused) {
         music.play().catch(() => {});
