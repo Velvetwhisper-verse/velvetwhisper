@@ -17,91 +17,107 @@
       color: #f2c2e0;
       text-align: center;
       min-height: 100vh;
-      overflow-x: hidden;
     }
 
     h1 {
-      font-size: 2.2em;
-      margin-top: 80px;
-      margin-bottom: 20px;
+      font-family: 'Quicksand', sans-serif;
+      margin-top: 60px;
+      font-size: 2em;
+      color: #f2c2e0;
+      text-shadow: 0 0 6px #f2c2e080;
     }
 
     .upload-box {
-      margin: 30px auto;
-      padding: 20px;
-      background: #1a1a1a;
-      border-radius: 12px;
-      width: 90%;
-      max-width: 400px;
-      box-shadow: 0 0 10px #f2c2e05f;
+      background: #111111cc;
+      padding: 30px 24px;
+      border-radius: 16px;
+      max-width: 420px;
+      margin: 40px auto;
+      box-shadow: 0 0 16px #f2c2e030;
     }
 
-    input, select, button {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 8px;
-      border: none;
-      font-size: 1em;
+    .upload-box label {
+      display: block;
+      text-align: left;
       font-family: 'Quicksand', sans-serif;
+      margin: 12px 0 6px;
+      font-size: 0.95em;
+      color: #f2c2e0;
     }
 
-    button {
+    .upload-box input,
+    .upload-box select,
+    .upload-box textarea {
+      width: 100%;
+      padding: 10px 14px;
+      margin-bottom: 18px;
+      border-radius: 6px;
+      border: none;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 1em;
+      box-shadow: inset 0 0 4px #f2c2e030;
+      background: #faf1f6;
+      color: #222;
+    }
+
+    .upload-box textarea {
+      resize: vertical;
+    }
+
+    #upload-btn {
+      margin-top: 12px;
+      width: 100%;
       background-color: #fce4ec;
       color: #111;
+      font-size: 1em;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 14px;
       cursor: pointer;
-      box-shadow: 0 0 10px #fce4ec80;
+      font-family: 'Quicksand', sans-serif;
+      box-shadow: 0 0 12px #fce4ec80;
       transition: all 0.3s ease;
     }
 
-    button:hover {
-      box-shadow: 0 0 16px #fce4ecb3;
+    #upload-btn:hover {
+      box-shadow: 0 0 18px #fce4ecb3;
       transform: scale(1.05);
     }
 
     .footer {
-      margin-top: 60px;
+      margin-top: 50px;
       font-size: 0.85em;
       color: #aaa;
+      line-height: 1.6;
     }
   </style>
 </head>
 <body>
-
   <h1>Private Upload Page</h1>
+
   <div class="upload-box">
     <label for="title">✧ Enter Your Story Title</label>
     <input type="text" id="title" placeholder="e.g. SparkInTheSteel">
 
+    <label for="keywords">✧ Enter Keywords</label>
+    <input type="text" id="keywords" placeholder="e.g. Megatron · Hurt · NSFW">
+
     <label for="category">✧ Choose IP Category</label>
     <select id="category">
-      <option value="transformers">Transformers</option>
-      <option value="cod">Call of Duty</option>
-      <option value="other">Other</option>
+      <option>Transformers</option>
+      <option>Call of Duty</option>
+      <!-- 你可以继续扩展其他作品分类 -->
     </select>
 
-    <button onclick="upload()">📝 Upload to GitHub</button>
+    <label for="content">✧ Story Content</label>
+    <textarea id="content" rows="10" placeholder="Paste your story here..."></textarea>
+
+    <button id="upload-btn">📄 Upload to GitHub</button>
   </div>
 
   <div class="footer">
-    ✧ For BabyAlexis' use only · Secret content gate · Not public
+    ✧ For <strong>BabyAlexis'</strong> use only · Secret content gate · Not public<br>
+    ˚₊‧꒰ঌ ♡ ໒꒱‧₊˚
   </div>
-
-  <script>
-    function upload() {
-      const title = document.getElementById('title').value.trim();
-      const category = document.getElementById('category').value;
-      if (!title) {
-        alert('Please enter a title first!');
-        return;
-      }
-      const path = `novels/${category}/${title}.md`;
-      const githubURL = `https://github.com/Velvetwhisper-verse/Velvetwhisper/new/main/${path}`;
-      window.open(githubURL, '_blank');
-    }
-  </script>
-
 </body>
 </html>
-```
-"""))
