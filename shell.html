@@ -41,10 +41,14 @@
   </style>
 </head>
 <body>
-  <!-- 音乐播放器（固定右上角） -->
-  <iframe src="/music.html" id="music-frame" allow="autoplay"></iframe>
+  <!-- 页面内容（加载首页） -->
+<iframe src="/index.html" id="content-frame"></iframe>
 
-  <!-- 页面内容 -->
-  <iframe src="/index.html" id="content-frame"></iframe>
+<!-- 音乐播放器 iframe：让它变成普通页面结构 -->
+<div style="text-align: right; padding: 12px;">
+  <iframe src="/music.html" id="music-frame" allow="autoplay"
+    style="width: 48px; height: 36px; border: none; background: transparent;">
+  </iframe>
+</div>
 </body>
 </html>
