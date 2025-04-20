@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>VelvetWhisper Shell</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+    }
+
+    iframe {
+      border: none;
+    }
+
+    #music-frame {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 48px;
+      height: 36px;
+      z-index: 999;
+    }
+
+    #content-frame {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 持久音乐播放器 iframe -->
+  <iframe id="music-frame" src="/music.html" allow="autoplay"></iframe>
+
+  <!-- 主内容 iframe：初始载入首页 -->
+  <iframe id="content-frame" src="/index.html"></iframe>
+
+</body>
+</html>
