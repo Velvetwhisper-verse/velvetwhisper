@@ -9,8 +9,8 @@
     }
 
     #music-btn {
-      background-color: #fce4ec;
-      color: #111;
+      background: transparent; /* 透明背景 */
+      color: #fce4ec;
       font-size: 1.4em;
       display: flex;
       align-items: center;
@@ -73,7 +73,7 @@
       pulseEffect();
     });
 
-    // 恢复播放状态（不改变图标）
+    // 恢复播放状态
     window.addEventListener('click', () => {
       if (sessionStorage.getItem("musicPlaying") === "true" && music.paused) {
         music.play().catch(() => {});
