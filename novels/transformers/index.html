@@ -124,9 +124,9 @@
   </div>
 
   <script>
-    const repo = 'Velvetwhisper-verse';
+    const repo = 'Velvetwhisper-verse/velvetwhisper';
     const folder = 'novels/transformers';
-    const apiUrl = `https://api.github.com/repos/${repo}/${folder}/contents/`;
+    const apiUrl = `https://api.github.com/repos/${repo}/contents/${folder}`;
 
     fetch(apiUrl)
       .then(response => response.json())
