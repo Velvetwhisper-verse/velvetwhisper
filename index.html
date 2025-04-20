@@ -3,12 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <title>VelvetWhisper | Reading Universe</title>
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="VelvetWhisper - A private fiction space created by BabyAlexis, offering immersive fandom universes and soft shameful indulgence.">
   <link rel="icon" href="/favicon.ico" type="image/x-icon" />
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet" />
+
+  <!-- 自动跳转到壳页面 -->
+  <script>
+    if (window.self === window.top) {
+      window.location.href = "/shell.html";
+    }
+  </script>
 
   <style>
     body {
@@ -99,36 +105,13 @@
     <p class="subtitle">written by <strong>BabyAlexis</strong> — your private storymaker 💗</p>
   </div>
 
-  <!-- ENTER 按钮 -->
+  <!-- ENTER 按钮（只切换 iframe 内容） -->
   <a href="#" class="enter-btn" onclick="parent.document.getElementById('content-frame').src = '/novels/index.html'; return false;">💗 Enter 💗</a>
-
-  <!-- 音乐 iframe（页面不刷新，音乐不中断） -->
-  <iframe src="/music.html" id="music-frame" allow="autoplay" style="
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 48px;
-    height: 36px;
-    border: none;
-    background: transparent;
-    z-index: 999;
-  "></iframe>
 
   <!-- 底部版权信息 -->
   <div class="footer">
     ✧ All stories by BabyAlexis · For personal reading only · Do not copy, repost or share<br>
     ✧ 本站内容仅限个人阅读，禁止转发、截图、复制、商用。违者将永失访问权限。
   </div>
-
-  <!-- 防复制机制 -->
-  <script>
-    document.addEventListener('contextmenu', e => e.preventDefault());
-    document.addEventListener('selectstart', e => e.preventDefault());
-    document.addEventListener('keydown', e => {
-      if (e.ctrlKey && ['c', 'u', 'a'].includes(e.key.toLowerCase())) {
-        e.preventDefault();
-      }
-    });
-  </script>
 </body>
 </html>
