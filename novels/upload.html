@@ -48,9 +48,10 @@
     .upload-box input,
     .upload-box select,
     .upload-box textarea {
-      width: 100%;
+      width: calc(100% - 28px); /* 保留边距，防止撑出容器 */
       padding: 10px 14px;
-      margin-bottom: 18px;
+      margin: 0 auto 18px;
+      display: block;
       border-radius: 6px;
       border: none;
       font-family: 'Quicksand', sans-serif;
