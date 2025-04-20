@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
   <meta charset="UTF-8">
-  <title>秘密上传 | VelvetWhisper</title>
+  <title>Secret Upload | VelvetWhisper</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
   <style>
@@ -136,25 +136,25 @@
 </head>
 <body>
   <div id="lockscreen" style="text-align:center;margin-top:100px;">
-  <h2 style="color:#f2c2e0;">🔐 输入你的专属密钥</h2>
-  <input type="password" id="unlockInput" placeholder="例如：alexisOnly" style="padding:10px 14px;border-radius:6px;border:none;font-family:'Quicksand';font-size:1em;">
+  <h2 style="color:#f2c2e0;">🔐 Enter the Password</h2>
+  <input type="password" id="unlockInput" style="padding:10px 14px;border-radius:6px;border:none;font-family:'Quicksand';font-size:1em;">
   <br><br>
   <button onclick="unlockPage()" style="background-color:#fce4ec;color:#111;font-size:1em;border:none;border-radius:8px;padding:10px 14px;cursor:pointer;font-family:'Quicksand';box-shadow:0 0 12px #fce4ec80;">进入</button>
   <p id="tip" style="color:#f88;"></p>
 </div>
-  <h1>秘密上传作品</h1>
+  <h1>Private Upload Page</h1>
 
   <div class="upload-box">
-    <label for="title">✧ 作品标题</label>
-    <input type="text" id="title" placeholder="如：SparkInTheSteel">
+    <label for="title">✧ Enter Your Story Title</label>
+    <input type="text" id="title" placeholder="e.g. SparkInTheSteel">
 
-    <label for="category">✧ 作品分类</label>
+    <label for="category">✧ Choose IP Category</label>
     <select id="category">
       <option>Transformers</option>
       <option>Call of Duty</option>
     </select>
 
-    <label>✧ 勾选角色关键词</label>
+    <label>✧ Choose Character</label>
     <div class="checkbox-group" id="characters">
       <label><input type="checkbox" value="擎天柱"> 擎天柱</label>
       <label><input type="checkbox" value="威震天"> 威震天</label>
@@ -189,7 +189,7 @@
       <label><input type="checkbox" value="Graves"> Graves</label>
     </div>
 
-    <label>✧ 勾选 XP 元素</label>
+    <label>✧ Choose kinks</label>
     <div class="checkbox-group" id="xp">
       <label><input type="checkbox" value="非自愿"> 非自愿</label>
       <label><input type="checkbox" value="bdsm"> BDSM</label>
@@ -223,10 +223,10 @@
       <label><input type="checkbox" value="sugardaddy"> Sugardaddy</label>
     </div>
 
-    <label for="content">✧ 正文内容</label>
-    <textarea id="content" rows="10" placeholder="贴上你的完整故事文本..."></textarea>
+    <label for="content">✧ Story Content</label>
+    <textarea id="content" rows="10" placeholder="Paste your story here..."></textarea>
 
-    <button id="upload-btn" onclick="uploadToGitHub()">📄 上传至 GitHub</button>
+    <button id="upload-btn" onclick="uploadToGitHub()">📄 Upload to GitHub</button>
   </div>
 
   <script>
@@ -268,7 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const repo = 'Velvetwhisper';
       const owner = 'Velvetwhisper-verse';
       const path = `novels/${filename}`;
-      const token = '此处粘贴密钥（仅自己打开用）';
+
 
       try {
         const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`, {
