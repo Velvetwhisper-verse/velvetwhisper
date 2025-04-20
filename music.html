@@ -6,21 +6,29 @@
     body {
       margin: 0;
       background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 36px;
+      overflow: hidden;
     }
 
     #music-btn {
       background-color: #fce4ec;
       color: #111;
-      font-size: 1em;
+      font-size: 1.2em;
       border: none;
       border-radius: 8px;
-      padding: 8px 12px;
+      width: 100%;
+      height: 100%;
       cursor: pointer;
       font-family: 'Quicksand', sans-serif;
       box-shadow: 0 0 10px #fce4ec80;
       transition: all 0.3s ease;
-      width: 48px;
-      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     #music-btn:hover {
@@ -37,12 +45,12 @@
     const music = document.getElementById("bg-music");
     const musicBtn = document.getElementById("music-btn");
 
-    const shouldPlay = sessionStorage.getItem("musicPlaying") === "true";
-
-    if (shouldPlay) {
+    // 初始设置：不自动播放
+    if (sessionStorage.getItem("musicPlaying") === "true") {
       musicBtn.textContent = "⏸️";
     }
 
+    // 点击播放控制
     musicBtn.addEventListener("click", () => {
       if (music.paused) {
         music.play();
@@ -55,8 +63,8 @@
       }
     });
 
-    // 手动播放触发（避免自动播放限制）
-    window.addEventListener('click', () => {
+    // 如果之前是播放状态，用户第一次点击页面后触发播放（解决 autoplay 限制）
+    window.addEventListener("click", () => {
       if (sessionStorage.getItem("musicPlaying") === "true" && music.paused) {
         music.play().catch(() => {});
       }
