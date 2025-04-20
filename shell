@@ -2,43 +2,59 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>VelvetWhisper Shell</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    html, body {
+    body {
       margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow: hidden;
-      background: #000;
+      background: transparent;
     }
-
-    iframe {
+    #music-btn {
+      background-color: #fce4ec;
+      color: #111;
+      font-size: 1em;
       border: none;
+      border-radius: 8px;
+      padding: 8px 12px;
+      cursor: pointer;
+      font-family: 'Quicksand', sans-serif;
+      box-shadow: 0 0 10px #fce4ec80;
+      transition: all 0.3s ease;
     }
-
-    #music-frame {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      width: 48px;
-      height: 36px;
-      z-index: 999;
-    }
-
-    #content-frame {
-      width: 100%;
-      height: 100%;
+    #music-btn:hover {
+      box-shadow: 0 0 16px #fce4ecb3;
+      transform: scale(1.05);
     }
   </style>
 </head>
 <body>
+  <button id="music-btn">▶️</button>
+  <audio id="bg-music" preload="auto" loop src="https://ia802808.us.archive.org/26/items/ClairDeLunedebussy/2009-03-30-clairdelune_64kb.mp3"></audio>
 
-  <!-- 持久音乐播放器 iframe -->
-  <iframe id="music-frame" src="/music.html" allow="autoplay"></iframe>
+  <script>
+    const music = document.getElementById("bg-music");
+    const musicBtn = document.getElementById("music-btn");
 
-  <!-- 主内容 iframe：初始载入首页 -->
-  <iframe id="content-frame" src="/index.html"></iframe>
+    // 页面加载时不自动播放
+    if (sessionStorage.getItem("musicPlaying") === "true") {
+      musicBtn.textContent = "⏸️";
+    }
 
+    // 点击切换播放状态
+    musicBtn.addEventListener("click", () => {
+      if (music.paused) {
+        music.play();
+        musicBtn.textContent = "⏸️";
+        sessionStorage.setItem("musicPlaying", "true");
+      } else {
+        music.pause();
+        musicBtn.textContent = "▶️";
+        sessionStorage.setItem("musicPlaying", "false");
+      }
+    });
+
+    // 若切换页面前正在播放，则继续播放
+    if (sessionStorage.getItem("musicPlaying") === "true") {
+      music.play();
+    }
+  </script>
 </body>
 </html>
