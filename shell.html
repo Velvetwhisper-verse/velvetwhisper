@@ -5,7 +5,6 @@
   <title>VelvetWhisper | Portal Shell</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
-
   <style>
     html, body {
       margin: 0;
@@ -33,31 +32,7 @@
       z-index: 999;
     }
 
-    /* 统一的浮动按钮样式（返回键等） */
-    .btn-float {
-      position: fixed;
-      background-color: #fce4ec;
-      color: #111;
-      font-size: 1em;
-      border: none;
-      border-radius: 8px;
-      padding: 8px 12px;
-      font-family: 'Quicksand', sans-serif;
-      box-shadow: 0 0 10px #fce4ec80;
-      transition: all 0.3s ease;
-      cursor: pointer;
-      z-index: 999;
-      height: 36px;
-      line-height: 1;
-      min-width: 36px;
-    }
-
-    .btn-float:hover {
-      box-shadow: 0 0 16px #fce4ecb3;
-      transform: scale(1.05);
-    }
-
-    /* 页面内容 */
+    /* 页面内容 iframe */
     #content-frame {
       width: 100%;
       height: 100%;
@@ -66,10 +41,7 @@
   </style>
 </head>
 <body>
-  <!-- 返回按钮 -->
-  <button class="btn-float" style="top: 20px; left: 20px;" onclick="document.getElementById('content-frame').contentWindow.history.back()">🔙</button>
-
-  <!-- 音乐播放器 -->
+  <!-- 音乐播放器（固定右上角） -->
   <iframe src="/music.html" id="music-frame" allow="autoplay"></iframe>
 
   <!-- 页面内容 -->
