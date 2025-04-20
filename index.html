@@ -18,18 +18,18 @@
 
   <style>
     body {
-  margin: 0;
-  font-family: 'Georgia', serif;
-  background: radial-gradient(circle at 50% 42%, rgba(255, 204, 243, 0.25) 0%, #050505 60%);
-  background-attachment: fixed;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  color: #f2c2e0;
-  text-align: center;
-  min-height: 100vh;
-  overflow-x: hidden;
-}
+      margin: 0;
+      font-family: 'Georgia', serif;
+      background: radial-gradient(circle at 50% 42%, rgba(255, 204, 243, 0.25) 0%, #050505 60%);
+      background-attachment: fixed;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      color: #f2c2e0;
+      text-align: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
 
     .top-half-container {
       margin-top: 80px;
@@ -77,6 +77,18 @@
       100% { text-shadow: 0 0 4px #f2c2e060; }
     }
 
+    /* 播放器 iframe 样式 */
+    #music-frame {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 48px;
+      height: 36px;
+      border: none;
+      background: transparent;
+      z-index: 999;
+    }
+
     .footer {
       position: fixed;
       bottom: 10px;
@@ -104,6 +116,9 @@
 </head>
 
 <body>
+  <!-- 播放器 iframe（不会自动播放，所有页面共享） -->
+  <iframe src="/music.html" id="music-frame" allow="autoplay"></iframe>
+
   <div class="top-half-container">
     <h1>Welcome to VelvetWhisper</h1>
     <p class="subtitle">written by <strong>BabyAlexis</strong> — your private storymaker 💗</p>
