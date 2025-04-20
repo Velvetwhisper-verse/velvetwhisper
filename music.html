@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <style>
     html, body {
       margin: 0;
@@ -9,7 +9,7 @@
       background: transparent;
     }
 
-    button {
+    #music-btn {
       background-color: #fce4ec;
       color: #111;
       font-size: 1em;
@@ -26,7 +26,7 @@
       display: inline-block;
     }
 
-    button:hover {
+    #music-btn:hover {
       box-shadow: 0 0 16px #fce4ecb3;
       transform: scale(1.05);
     }
@@ -40,13 +40,9 @@
     const music = document.getElementById("bg-music");
     const musicBtn = document.getElementById("music-btn");
 
+    // 显示上次状态（但不自动播放）
     if (sessionStorage.getItem("musicPlaying") === "true") {
-      music.play().then(() => {
-        musicBtn.textContent = "⏸️";
-      }).catch(() => {
-        // 有些浏览器不自动播放
-        musicBtn.textContent = "▶️";
-      });
+      musicBtn.textContent = "⏸️";
     }
 
     musicBtn.addEventListener("click", () => {
