@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Secret Upload | VelvetWhisper</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Georgia', serif;
+      background: radial-gradient(circle at 50% 45%, rgba(100, 50, 80, 0.08) 0%, #0a0a0a 75%);
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      color: #f2c2e0;
+      text-align: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      font-size: 2.2em;
+      margin-top: 80px;
+      margin-bottom: 20px;
+    }
+
+    .upload-box {
+      margin: 30px auto;
+      padding: 20px;
+      background: #1a1a1a;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 0 10px #f2c2e05f;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: none;
+      font-size: 1em;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    button {
+      background-color: #fce4ec;
+      color: #111;
+      cursor: pointer;
+      box-shadow: 0 0 10px #fce4ec80;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      box-shadow: 0 0 16px #fce4ecb3;
+      transform: scale(1.05);
+    }
+
+    .footer {
+      margin-top: 60px;
+      font-size: 0.85em;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Private Upload Page</h1>
+  <div class="upload-box">
+    <label for="title">✧ Enter Your Story Title</label>
+    <input type="text" id="title" placeholder="e.g. SparkInTheSteel">
+
+    <label for="category">✧ Choose IP Category</label>
+    <select id="category">
+      <option value="transformers">Transformers</option>
+      <option value="cod">Call of Duty</option>
+      <option value="other">Other</option>
+    </select>
+
+    <button onclick="upload()">📝 Upload to GitHub</button>
+  </div>
+
+  <div class="footer">
+    ✧ For BabyAlexis' use only · Secret content gate · Not public
+  </div>
+
+  <script>
+    function upload() {
+      const title = document.getElementById('title').value.trim();
+      const category = document.getElementById('category').value;
+      if (!title) {
+        alert('Please enter a title first!');
+        return;
+      }
+      const path = `novels/${category}/${title}.md`;
+      const githubURL = `https://github.com/Velvetwhisper-verse/Velvetwhisper/new/main/${path}`;
+      window.open(githubURL, '_blank');
+    }
+  </script>
+
+</body>
+</html>
+```
+"""))
