@@ -1,60 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
+  <title>VelvetWhisper | Portal Shell</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+
   <style>
-    body {
+    html, body {
       margin: 0;
-      background: transparent;
+      padding: 0;
+      background: radial-gradient(circle at 50% 42%, rgba(255, 204, 243, 0.25) 0%, #050505 60%);
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      font-family: 'Georgia', serif;
+      color: #f2c2e0;
+      height: 100vh;
+      overflow: hidden;
     }
-    #music-btn {
-      background-color: #fce4ec;
-      color: #111;
-      font-size: 1em;
+
+    /* 播放按钮位置（iframe嵌入） */
+    #music-frame {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 48px;
+      height: 36px;
       border: none;
-      border-radius: 8px;
-      padding: 8px 12px;
-      cursor: pointer;
-      font-family: 'Quicksand', sans-serif;
-      box-shadow: 0 0 10px #fce4ec80;
-      transition: all 0.3s ease;
+      background: transparent;
+      z-index: 999;
     }
-    #music-btn:hover {
-      box-shadow: 0 0 16px #fce4ecb3;
-      transform: scale(1.05);
+
+    /* 内容iframe（显示index.html或其他页面） */
+    #content-frame {
+      width: 100%;
+      height: 100%;
+      border: none;
     }
   </style>
 </head>
 <body>
-  <button id="music-btn">▶️</button>
-  <audio id="bg-music" preload="auto" loop src="https://ia802808.us.archive.org/26/items/ClairDeLunedebussy/2009-03-30-clairdelune_64kb.mp3"></audio>
+  <!-- 播放器 iframe -->
+  <iframe src="/music.html" id="music-frame" allow="autoplay"></iframe>
 
-  <script>
-    const music = document.getElementById("bg-music");
-    const musicBtn = document.getElementById("music-btn");
-
-    // 页面加载时不自动播放
-    if (sessionStorage.getItem("musicPlaying") === "true") {
-      musicBtn.textContent = "⏸️";
-    }
-
-    // 点击切换播放状态
-    musicBtn.addEventListener("click", () => {
-      if (music.paused) {
-        music.play();
-        musicBtn.textContent = "⏸️";
-        sessionStorage.setItem("musicPlaying", "true");
-      } else {
-        music.pause();
-        musicBtn.textContent = "▶️";
-        sessionStorage.setItem("musicPlaying", "false");
-      }
-    });
-
-    // 若切换页面前正在播放，则继续播放
-    if (sessionStorage.getItem("musicPlaying") === "true") {
-      music.play();
-    }
-  </script>
+  <!-- 内容 iframe（默认加载首页） -->
+  <iframe src="/index.html" id="content-frame"></iframe>
 </body>
 </html>
