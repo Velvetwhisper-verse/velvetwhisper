@@ -23,7 +23,7 @@
 
     h1 {
       font-size: 2.4em;
-      margin: 20px 0 40px;
+      margin: 40px 0;
     }
 
     .story-card {
@@ -59,7 +59,9 @@
       width: 100%;
       display: flex;
       justify-content: space-between;
-      padding: 20px;
+      align-items: center;
+      padding: 16px 20px 0;
+      box-sizing: border-box;
       position: relative;
       top: 0;
       left: 0;
@@ -68,16 +70,20 @@
     .btn-float {
       background-color: #fce4ec;
       color: #111;
-      font-size: 1em;
+      font-size: 1.2em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       border: none;
       border-radius: 8px;
-      padding: 8px 12px;
+      padding: 0;
       cursor: pointer;
       font-family: 'Quicksand', sans-serif;
       box-shadow: 0 0 10px #fce4ec80;
       transition: all 0.3s ease;
+      width: 48px;
       height: 36px;
-      min-width: 36px;
+      line-height: 1;
     }
 
     .btn-float:hover {
@@ -96,10 +102,10 @@
 <body>
 
   <!-- 顶部按钮区：返回 + 首页 -->
-  <div class="btn-area" style="display: flex; justify-content: space-between; align-items: center; padding: 20px;">
-  <button class="btn-float" onclick="history.back()">🔙</button>
-  <button class="btn-float" onclick="location.href='/'" style="margin-right: 25px;">🏠</button>
-</div>
+  <div class="btn-area">
+    <button class="btn-float" onclick="history.back()">🔙</button>
+    <button class="btn-float" onclick="location.href='/'">🏠</button>
+  </div>
 
   <h1>Transformers Otome Universe</h1>
 
