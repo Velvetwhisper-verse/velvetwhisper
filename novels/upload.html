@@ -133,6 +133,7 @@
     }
     
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
   <div id="lockscreen" style="text-align:center;margin-top:100px;">
@@ -256,53 +257,148 @@
       const xpTags = Array.from(document.querySelectorAll('#xp input:checked')).map(cb => cb.value);
       const allTags = [...characterTags, ...xpTags].join(', ');
 
-      if (!title || !content) {
-        alert('标题和内容不能为空哦～');
-        return;
-      }
-
-      const token = prompt("请输入你的 GitHub Token：");
-      if (!token) {
-        alert("上传取消，未输入密钥");
-        return;
-      }
-
-      const fileContent = `# ${title}\n\n**分类：** ${category}\n\n**关键词：** ${allTags}\n\n${content}`;
-      const base64Content = btoa(unescape(encodeURIComponent(fileContent)));
-      const safeTitle = title.replace(/\s+/g, "_").replace(/[^\w\-]/g, "");
-      const filename = `${Date.now()}-${safeTitle}.md`;
-
-      const repo = 'Velvetwhisper';
-      const owner = 'Velvetwhisper-verse';
-      const folder = category.toLowerCase().replace(/\s+/g, '').replace(/[^\w\-]/g, '');
-      const path = `novels/${folder}/${filename}`;
-
-      try {
-        const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`, {
-          method: 'PUT',
-          headers: {
-            'Authorization': `token ${token}`,
-            'Accept': 'application/vnd.github.v3+json'
-          },
-          body: JSON.stringify({
-          message: `新增作品：${title}`,
-          content: base64Content
-          })
-        });
-
-        if (response.ok) {
-          alert('上传成功！🎉');
-          document.getElementById('title').value = '';
-          document.getElementById('content').value = '';
-          document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
-        } else {
-          const result = await response.json();
-          alert('上传失败：' + result.message);
-        }
-      } catch (error) {
-        alert('网络错误：' + error.message);
-      }
+    if (!title || !content) {
+      alert('标题和内容不能为空哦～');
+      return;
     }
+
+    const token = prompt("请输入你的 GitHub Token：");
+    if (!token) {
+      alert("上传取消，未输入密钥");
+      return;
+    }
+
+    const safeTitle = title.replace(/\s+/g, "_").replace(/[^\w\-]/g, "");
+    const filename = `${Date.now()}-${safeTitle}`;
+    const folder = category.toLowerCase().replace(/\s+/g, '');
+    const path = `novels/${folder}/${filename}`;
+
+    const mdContent = `# ${title}\n\n**分类：** ${category}\n\n**关键词：** ${allTags}\n\n${content}`;
+    const mdBase64 = btoa(unescape(encodeURIComponent(mdContent)));
+
+    // 渲染 HTML 阅读页内容
+    const htmlContent = `
+ <!DOCTYPE html>
+ <html lang="zh">
+ <head>
+   <meta charset="UTF-8" />
+   <title>${title} | VelvetWhisper</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <style>
+     body {
+       background: radial-gradient(circle at 50% 40%, rgba(255, 228, 255, 0.08), #0a0a0a 75%);
+       color: #f2c2e0;
+       font-family: "Georgia", serif;
+       line-height: 1.8;
+       padding: 40px 24px 80px;
+       max-width: 740px;
+       margin: auto;
+       user-select: none;
+     }
+
+     h1 {
+      font-size: 2em;
+      text-align: center;
+      font-family: 'Quicksand', sans-serif;
+      margin-bottom: 40px;
+     }
+
+     .back {
+       position: fixed;
+       top: 20px;
+       left: 20px;
+       background: #fce4ec;
+       color: #111;
+       border: none;
+       padding: 6px 12px;
+       border-radius: 6px;
+       font-size: 0.95em;
+       font-family: 'Quicksand', sans-serif;
+       box-shadow: 0 0 10px #fce4ec80;
+       cursor: pointer;
+     }
+
+     a {
+      color: #ffaadd;
+     }
+
+     body, html {
+       -webkit-user-select: none;
+       -moz-user-select: none;
+       -ms-user-select: none;
+       user-select: none;
+     }
+
+     body {
+       -webkit-touch-callout: none;
+     }
+
+     html {
+       -webkit-user-drag: none;
+     }
+
+     body::after {
+       content: "仅限私人阅读，禁止转载截图";
+       position: fixed;
+       bottom: 20px;
+       right: 20px;
+       font-size: 0.75em;
+       color: #888;
+     }
+  </style>
+</head>
+<body oncontextmenu="return false">
+  <button class="back" onclick="history.back()">← 返回</button>
+  <h1>${title}</h1>
+  <div id="content">${marked.parse(content)}</div>
+</body>
+</html>`.trim();
+
+  const htmlBase64 = btoa(unescape(encodeURIComponent(htmlContent)));
+
+  const repo = 'Velvetwhisper';
+  const owner = 'Velvetwhisper-verse';
+
+  try {
+    // 上传 .md 文件
+    const mdRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}.md`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `token ${token}`,
+        'Accept': 'application/vnd.github.v3+json'
+      },
+      body: JSON.stringify({
+        message: `新增作品：${title}（.md）`,
+        content: mdBase64
+      })
+    });
+
+    // 上传 .html 文件
+    const htmlRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}.html`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `token ${token}`,
+        'Accept': 'application/vnd.github.v3+json'
+      },
+      body: JSON.stringify({
+        message: `新增作品：${title}（.html）`,
+        content: htmlBase64
+      })
+    });
+
+    if (mdRes.ok && htmlRes.ok) {
+      alert('上传成功！🎉');
+      document.getElementById('title').value = '';
+      document.getElementById('content').value = '';
+      document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+    } else {
+      alert('上传失败：' + (await mdRes.json()).message || (await htmlRes.json()).message);
+    }
+
+  } catch (error) {
+    alert('网络错误：' + error.message);
+  }
+}
 </script>
 </body>
 </html>
