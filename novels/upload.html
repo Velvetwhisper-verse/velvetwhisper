@@ -109,6 +109,42 @@
       color: #aaa;
       line-height: 1.6;
     }
+    .checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  padding: 12px;
+  background: #faf1f6;
+  border-radius: 8px;
+  box-shadow: inset 0 0 4px #f2c2e030;
+  margin-bottom: 18px;
+  max-height: 180px;
+  overflow-y: auto;
+}
+
+    .checkbox-group label {
+  background: #fce4ec;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.95em;
+  color: #111;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  box-shadow: 0 0 4px #fce4ec60;
+  transition: all 0.2s ease;
+}
+
+    .checkbox-group label:hover {
+  box-shadow: 0 0 8px #fce4ecaa;
+  transform: scale(1.02);
+}
+
+    .checkbox-group input[type="checkbox"] {
+  accent-color: #cc6699;
+  transform: scale(1.1);
+}
   </style>
 </head>
 <body>
