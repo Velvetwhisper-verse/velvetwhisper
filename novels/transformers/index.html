@@ -66,18 +66,24 @@
     }
 
     .btn-float {
+      position: fixed;
       background-color: #fce4ec;
       color: #111;
-      font-size: 1em;
+      font-size: 1.2em;
       border: none;
       border-radius: 8px;
-      padding: 8px 12px;
+      padding: 0;
       cursor: pointer;
+      z-index: 999;
       font-family: 'Quicksand', sans-serif;
       box-shadow: 0 0 10px #fce4ec80;
       transition: all 0.3s ease;
+      width: 48px;
       height: 36px;
-      min-width: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
     }
 
     .btn-float:hover {
