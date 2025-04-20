@@ -135,6 +135,13 @@
   </style>
 </head>
 <body>
+  <div id="lockscreen" style="text-align:center;margin-top:100px;">
+  <h2 style="color:#f2c2e0;">🔐 输入你的专属密钥</h2>
+  <input type="password" id="unlockInput" placeholder="例如：alexisOnly" style="padding:10px 14px;border-radius:6px;border:none;font-family:'Quicksand';font-size:1em;">
+  <br><br>
+  <button onclick="unlockPage()" style="background-color:#fce4ec;color:#111;font-size:1em;border:none;border-radius:8px;padding:10px 14px;cursor:pointer;font-family:'Quicksand';box-shadow:0 0 12px #fce4ec80;">进入</button>
+  <p id="tip" style="color:#f88;"></p>
+</div>
   <h1>秘密上传作品</h1>
 
   <div class="upload-box">
@@ -223,6 +230,22 @@
   </div>
 
   <script>
+    function unlockPage() {
+      const input = document.getElementById('unlockInput').value.trim();
+      const password = 'velvetkiss'; // 
+
+      if (input === password) {
+      document.getElementById('lockscreen').style.display = 'none';
+      document.querySelector('.upload-box').style.display = 'block';
+    } else {
+    document.getElementById('tip').innerText = '密钥不对哦，小猫只能被Daddy抱回去惩罚了。';
+    }
+}
+
+// 默认隐藏上传区域
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelector('.upload-box').style.display = 'none';
+});
     async function uploadToGitHub() {
       const title = document.getElementById('title').value.trim();
       const category = document.getElementById('category').value;
