@@ -3,12 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      background: transparent;
-    }
-
+    body { margin: 0; background: transparent; }
     #music-btn {
       background-color: #fce4ec;
       color: #111;
@@ -20,12 +15,7 @@
       font-family: 'Quicksand', sans-serif;
       box-shadow: 0 0 10px #fce4ec80;
       transition: all 0.3s ease;
-      height: 36px;
-      min-width: 36px;
-      line-height: 1;
-      display: inline-block;
     }
-
     #music-btn:hover {
       box-shadow: 0 0 16px #fce4ecb3;
       transform: scale(1.05);
@@ -40,9 +30,9 @@
     const music = document.getElementById("bg-music");
     const musicBtn = document.getElementById("music-btn");
 
-    // 显示上次状态（但不自动播放）
+    // 设置初始按钮状态（不播放）
     if (sessionStorage.getItem("musicPlaying") === "true") {
-      musicBtn.textContent = "⏸️";
+      musicBtn.textContent = "⏸️"; // 只切换图标，不自动播放
     }
 
     musicBtn.addEventListener("click", () => {
