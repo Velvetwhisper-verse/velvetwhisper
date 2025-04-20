@@ -21,7 +21,7 @@
       overflow: hidden;
     }
 
-    /* 播放按钮位置（iframe嵌入） */
+    /* 音乐播放器样式 */
     #music-frame {
       position: fixed;
       top: 20px;
@@ -33,7 +33,31 @@
       z-index: 999;
     }
 
-    /* 内容iframe（显示index.html或其他页面） */
+    /* 统一的浮动按钮样式（返回键等） */
+    .btn-float {
+      position: fixed;
+      background-color: #fce4ec;
+      color: #111;
+      font-size: 1em;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-family: 'Quicksand', sans-serif;
+      box-shadow: 0 0 10px #fce4ec80;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      z-index: 999;
+      height: 36px;
+      line-height: 1;
+      min-width: 36px;
+    }
+
+    .btn-float:hover {
+      box-shadow: 0 0 16px #fce4ecb3;
+      transform: scale(1.05);
+    }
+
+    /* 页面内容 */
     #content-frame {
       width: 100%;
       height: 100%;
@@ -42,10 +66,13 @@
   </style>
 </head>
 <body>
-  <!-- 播放器 iframe -->
+  <!-- 返回按钮 -->
+  <button class="btn-float" style="top: 20px; left: 20px;" onclick="document.getElementById('content-frame').contentWindow.history.back()">🔙</button>
+
+  <!-- 音乐播放器 -->
   <iframe src="/music.html" id="music-frame" allow="autoplay"></iframe>
 
-  <!-- 内容 iframe（默认加载首页） -->
+  <!-- 页面内容 -->
   <iframe src="/index.html" id="content-frame"></iframe>
 </body>
 </html>
