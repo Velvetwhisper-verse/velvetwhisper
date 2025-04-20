@@ -23,7 +23,7 @@
 
     h1 {
       font-size: 2.4em;
-      margin-top: 80px;
+      margin-top: 100px;
       margin-bottom: 40px;
     }
 
@@ -56,8 +56,17 @@
       color: #d9a8d9;
     }
 
+    .btn-area {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+      position: relative;
+      top: 0;
+      left: 0;
+    }
+
     .btn-float {
-      position: fixed;
       background-color: #fce4ec;
       color: #111;
       font-size: 1em;
@@ -65,13 +74,9 @@
       border-radius: 8px;
       padding: 8px 12px;
       cursor: pointer;
-      z-index: 999;
       font-family: 'Quicksand', sans-serif;
       box-shadow: 0 0 10px #fce4ec80;
       transition: all 0.3s ease;
-      display: inline-block;
-      text-align: center;
-      line-height: 1;
       height: 36px;
       min-width: 36px;
     }
@@ -82,9 +87,7 @@
     }
 
     .footer {
-      position: fixed;
-      bottom: 10px;
-      width: 100%;
+      margin-top: 80px;
       font-size: 0.85em;
       color: #aaa;
       line-height: 1.5;
@@ -93,7 +96,12 @@
 </head>
 <body>
 
-  
+  <!-- 顶部按钮区：返回 + 首页 -->
+  <div class="btn-area">
+    <button class="btn-float" onclick="history.back()">🔙</button>
+    <button class="btn-float" onclick="location.href='/'">🏠</button>
+  </div>
+
   <h1>Transformers Otome Universe</h1>
 
   <!-- 示例作品 -->
