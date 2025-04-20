@@ -5,25 +5,21 @@
   <title>VelvetWhisper | Reading Universe</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="VelvetWhisper - A private fiction space created by BabyAlexis, offering immersive fandom universes and soft shameful indulgence.">
-  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="shortcut icon" href="/favicon.ico" />
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet" />
-
-  <!-- 自动跳转到壳页面 -->
   <script>
     if (window.self === window.top) {
       window.location.href = "/shell.html";
     }
   </script>
-
   <style>
     body {
       margin: 0;
       font-family: 'Georgia', serif;
       background: radial-gradient(circle at 50% 42%, rgba(255, 204, 243, 0.25) 0%, #050505 60%);
       background-attachment: fixed;
-      background-position: center center;
-      background-repeat: no-repeat;
+      background-position: center;
       background-size: cover;
       color: #f2c2e0;
       text-align: center;
@@ -58,10 +54,8 @@
       color: #f2c2e0;
       background-color: transparent;
       border: none;
-      box-shadow: none;
       text-shadow: 0 0 6px #f2c2e0a5;
       animation: glowtext 2s infinite ease-in-out;
-      transition: all 0.3s ease;
       cursor: pointer;
     }
 
@@ -72,12 +66,11 @@
     }
 
     @keyframes glowtext {
-      0%   { text-shadow: 0 0 4px #f2c2e060; }
-      50%  { text-shadow: 0 0 8px #f2c2e0a0; }
+      0% { text-shadow: 0 0 4px #f2c2e060; }
+      50% { text-shadow: 0 0 8px #f2c2e0a0; }
       100% { text-shadow: 0 0 4px #f2c2e060; }
     }
 
-    /* 播放器 iframe 样式 */
     #music-frame {
       position: fixed;
       top: 20px;
@@ -97,26 +90,10 @@
       color: #aaa;
       line-height: 1.5;
     }
-
-    @media (prefers-color-scheme: light) {
-      body {
-        background: radial-gradient(circle at 50% 30%, #fff0f5 0%, #fff 40%);
-        color: #111;
-      }
-
-      .subtitle {
-        color: #914a91;
-      }
-
-      .footer {
-        color: #555;
-      }
-    }
   </style>
 </head>
-
 <body>
-  <!-- 播放器 iframe（所有页面共享） -->
+  <!-- 播放器 -->
   <iframe src="/music.html" id="music-frame" allow="autoplay"></iframe>
 
   <div class="top-half-container">
@@ -124,10 +101,8 @@
     <p class="subtitle">written by <strong>BabyAlexis</strong> — your private storymaker 💗</p>
   </div>
 
-  <!-- ENTER 按钮（只切换 iframe 内容） -->
   <a href="#" class="enter-btn" onclick="parent.document.getElementById('content-frame').src = '/novels/index.html'; return false;">💗 Enter 💗</a>
 
-  <!-- 底部版权信息 -->
   <div class="footer">
     ✧ All stories by BabyAlexis · For personal reading only · Do not copy, repost or share<br>
     ✧ 本站内容仅限个人阅读，禁止转发、截图、复制、商用。违者将永失访问权限。
