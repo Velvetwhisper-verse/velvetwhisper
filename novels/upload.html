@@ -116,7 +116,7 @@
     .checkbox-group input[type="checkbox"] {
       appearance: none;
       -webkit-appearance: none;
-      width: 12px;
+      width: 16px;
       height: 16px;
       border: 2px solid #d88aac;
       border-radius: 4px;
@@ -131,15 +131,16 @@
    }
 
     .checkbox-group input[type="checkbox"]:checked::before {
-      content: "✓";
+      content: "✔";
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%); /* ✅ 完全居中 */
-      font-size: 14px;                  /* ✅ 勾大一点 */
+      transform: translate(-50%, -55%); /* ✅ 完全居中 */
+      font-size: 13px;                  /* ✅ 勾大一点 */
       color: #d88aac;
       font-weight: bold;
-      line-height: 16px; /* ✅ 让它在方框中垂直居中 */
+      line-height: 1; /* ✅ 让它在方框中垂直居中 */
+      pointer-events: none;
    }
     #enter-btn {
       background: none;
