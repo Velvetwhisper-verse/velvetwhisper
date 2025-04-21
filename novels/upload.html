@@ -298,101 +298,79 @@
        }
 
        h1 {
-        font-size: 2em;
-        text-align: center;
-        font-family: 'Quicksand', sans-serif;
-        margin: 60px 0 40px;
+         font-size: 2em;
+         text-align: center;
+         font-family: 'Quicksand', sans-serif;
+         margin: 60px 0 40px;
        }
        a {
-        color: #ffaadd;
+         color: #ffaadd;
        }
        body, html {
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        }
-        body {
-        -webkit-touch-callout: none;
-      }
+         -webkit-user-select: none;
+         -moz-user-select: none;
+         -ms-user-select: none;
+         user-select: none;
+       }
+       body {
+         -webkit-touch-callout: none;
+       }
 
-      html {
-        -webkit-user-drag: none;
-      }
+       html {
+         -webkit-user-drag: none;
+       }
+ 
+       body::after {
+         content: "仅限私人阅读，禁止转载截图";
+         position: fixed;
+         bottom: 20px;
+         right: 20px;
+         font-size: 0.75em;
+         color: #888;
+       }
 
-      body::after {
-        content: "仅限私人阅读，禁止转载截图";
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        font-size: 0.75em;
-        color: #888;
-      }
+       .btn-back {
+          position: fixed;
+          top: 20px;
+          left: 20px;
+          z-index: 999;
+       }
 
-      .btn-area {
-        position: fixed;
-        top: 20px;
-        left: 20px;
-        display: flex;
-        gap: 12px;
-        z-index: 99;
-      }
+       .btn-home {
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          z-index: 999;
+       }
 
-      .btn-float {
-        background-color: #fce4ec;
-        color: #111;
-        font-size: 1.2em;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: none;
-        border-radius: 8px;
-        padding: 6px 12px;
-        cursor: pointer;
-        font-family: 'Quicksand', sans-serif;
-        box-shadow: 0 0 10px #fce4ec80;
-        transition: all 0.3s ease;
-      }
+       .btn-float {
+          background-color: #fce4ec;
+          color: #111;
+          font-size: 1.2em;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: none;
+          border-radius: 8px;
+          padding: 6px 12px;
+          cursor: pointer;
+          font-family: 'Quicksand', sans-serif;
+          box-shadow: 0 0 10px #fce4ec80;
+          transition: all 0.3s ease;
+       }
 
-      .btn-float:hover {
-        box-shadow: 0 0 16px #fce4ecb3;
-        transform: scale(1.05);
-      }
-      .btn-area {
-        position: fixed;
-        top: 20px;
-        left: 0;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        padding: 0 24px;
-        z-index: 999;
-     }
-
-      .btn-float {
-        background-color: #fce4ec;
-        color: #111;
-        font-size: 1.2em;
-        border: none;
-        border-radius: 8px;
-        padding: 6px 12px;
-        cursor: pointer;
-        font-family: 'Quicksand', sans-serif;
-        box-shadow: 0 0 10px #fce4ec80;
-        transition: all 0.3s ease;
-      }
-
-      .btn-float:hover {
-        box-shadow: 0 0 16px #fce4ecb3;
-        transform: scale(1.05);
-      }
+       .btn-float:hover {
+          box-shadow: 0 0 16px #fce4ecb3;
+          transform: scale(1.05);
+       }
   </style>
 </head>
 <body oncontextmenu="return false">
-  <div class="btn-area">
-  <button class="btn-float" onclick="history.back()">🔙</button>
-  <button class="btn-float" onclick="location.href='/'">🏠</button>
-</div>
+
+  <div class="btn-back">
+    <button class="btn-float btn-back" onclick="history.back()">🔙</button>
+    <button class="btn-float btn-home" onclick="location.href='/'">🏠</button>
+  </div>
   
   <h1>${title}</h1>
   <div id="content">${marked.parse(content)}</div>
