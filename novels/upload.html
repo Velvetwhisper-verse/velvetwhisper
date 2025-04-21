@@ -95,7 +95,7 @@
       align-items: center;
       justify-content: flex-start;
       white-space: nowrap; /* 关键：不换行 */
-      padding: 0 14px;
+      padding: 2 12px;
       margin: 4px;
       background-color: #fce4ec;
       border-radius: 16px;
@@ -105,9 +105,8 @@
       cursor: pointer;
       box-shadow: 0 0 6px #fce4ec80;
       transition: all 0.2s ease;
-      height: 28px; 
+      height: 26px; 
       line-height: 1;
-      max-width: 100%;
       position: relative;  /* ✅ 让内部 checkbox 居中时参考这个容器 */
     }
 
@@ -124,12 +123,10 @@
       border: 2px solid #d88aac;
       border-radius: 4px;
       background: #fff;
-      margin-right: 6px;
+      margin-right: 8px;
       display: inline-block;
-      vertical-align: middle; /* ✅ 让它跟文字在同一水平线上 */
       position: relative;
       top: 0; 
-      cursor: pointer;
       flex-shrink: 0;
    }
 
@@ -138,12 +135,11 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -55%); /* ✅ 完全居中 */
-      font-size: 13px;                  /* ✅ 勾大一点 */
+      transform: translate(-50%, -50%); /* ✅ 完全居中 */
+      font-size: 18px;                  /* ✅ 勾大一点 */
       color: #d88aac;
       font-weight: bold;
       line-height: 1; /* ✅ 让它在方框中垂直居中 */
-      pointer-events: none;
    }
     #enter-btn {
       background: none;
