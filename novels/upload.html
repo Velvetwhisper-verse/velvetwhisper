@@ -94,10 +94,10 @@
       display: inline-flex;
       align-items: center;
       white-space: nowrap; /* 关键：不换行 */
-      padding: 2px 10px;
+      padding: 4px 10px;
       margin: 4px;
       background-color: #fce4ec;
-      border-radius: 18px;
+      border-radius: 16px;
       font-size: 0.85em;
       color: #111;
       font-family: 'Quicksand', sans-serif;
@@ -115,12 +115,14 @@
     .checkbox-group input[type="checkbox"] {
       appearance: none;
       -webkit-appearance: none;
-      width: 6px;
-      height: 8px;
+      width: 16px;
+      height: 16px;
       border: 2px solid #d88aac;
-      border-radius: 2px;
+      border-radius: 4px;
       background: #fff;
-      margin-right: 6px;
+      margin-right: 8px;
+      display: inline-block;
+      vertical-align: middle; /* ✅ 让它跟文字在同一水平线上 */
       position: relative;
       cursor: pointer;
    }
@@ -128,12 +130,13 @@
     .checkbox-group input[type="checkbox"]:checked::before {
       content: "✓";
       position: absolute;
-      top: -1px;
-      left: 3px;
-      font-size: 18px;
+      top: 0;
+      left: 2px;
+      font-size: 12px;
       color: #d88aac;
       font-weight: bold;
-  }
+      line-height: 16px; /* ✅ 让它在方框中垂直居中 */
+   }
     #enter-btn {
       background: none;
       border: none;
