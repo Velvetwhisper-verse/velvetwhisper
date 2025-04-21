@@ -286,7 +286,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
    <style>
      body {
-       background: #0a0a0a; /* 纯深灰色，无渐变 */
+       background: #0a0a0a;
        color: #f2c2e0;
        font-family: "Georgia", serif;
        line-height: 1.8;
@@ -300,55 +300,71 @@
       font-size: 2em;
       text-align: center;
       font-family: 'Quicksand', sans-serif;
-      margin-bottom: 40px;
+      margin: 60px 0 40px;
      }
-
-     .back {
-       position: fixed;
-       top: 20px;
-       left: 20px;
-       background: #fce4ec;
-       color: #111;
-       border: none;
-       padding: 6px 12px;
-       border-radius: 6px;
-       font-size: 0.95em;
-       font-family: 'Quicksand', sans-serif;
-       box-shadow: 0 0 10px #fce4ec80;
-       cursor: pointer;
-     }
-
      a {
       color: #ffaadd;
      }
-
      body, html {
-       -webkit-user-select: none;
-       -moz-user-select: none;
-       -ms-user-select: none;
-       user-select: none;
-     }
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      }
+      body {
+      -webkit-touch-callout: none;
+    }
 
-     body {
-       -webkit-touch-callout: none;
-     }
+    html {
+      -webkit-user-drag: none;
+    }
 
-     html {
-       -webkit-user-drag: none;
-     }
+    body::after {
+      content: "仅限私人阅读，禁止转载截图";
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      font-size: 0.75em;
+      color: #888;
+    }
 
-     body::after {
-       content: "仅限私人阅读，禁止转载截图";
-       position: fixed;
-       bottom: 20px;
-       right: 20px;
-       font-size: 0.75em;
-       color: #888;
-     }
+    .btn-area {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      display: flex;
+      gap: 12px;
+      z-index: 99;
+    }
+
+    .btn-float {
+      background-color: #fce4ec;
+      color: #111;
+      font-size: 1.2em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      border-radius: 8px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-family: 'Quicksand', sans-serif;
+      box-shadow: 0 0 10px #fce4ec80;
+      transition: all 0.3s ease;
+    }
+
+    .btn-float:hover {
+      box-shadow: 0 0 16px #fce4ecb3;
+      transform: scale(1.05);
+    }
   </style>
 </head>
 <body oncontextmenu="return false">
-  <button class="back" onclick="history.back()">← 返回</button>
+  <div class="btn-area">
+    <button class="btn-float" onclick="history.back()">🔙</button>
+    <button class="btn-float" onclick="location.href='/'">🏠</button>
+  </div>
+  
   <h1>${title}</h1>
   <div id="content">${marked.parse(content)}</div>
 </body>
