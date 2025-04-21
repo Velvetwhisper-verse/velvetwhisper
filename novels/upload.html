@@ -113,25 +113,41 @@
     .checkbox-group input[type="checkbox"] {
       appearance: none;
       -webkit-appearance: none;
-      width: 14px;
-      height: 14px;
+      width: 18px;
+      height: 18px;
       border: 2px solid #d88aac;
-      border-radius: 3px;
+      border-radius: 4px;
       background: #fff;
       margin-right: 6px;
       position: relative;
       cursor: pointer;
-    }
+   }
 
     .checkbox-group input[type="checkbox"]:checked::before {
       content: "✓";
       position: absolute;
-      top: -2px;
-      left: 2px;
-      font-size: 12px;
+      top: -1px;
+      left: 3px;
+      font-size: 14px;
       color: #d88aac;
-    }
-    
+      font-weight: bold;
+  }
+    #enter-btn {
+      background: none;
+      border: none;
+      color: #f2c2e0;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 1.2em;
+      text-decoration: underline;
+      text-underline-offset: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-block;
+   }
+    #enter-btn:hover {
+      color: #ffaadd;
+      text-shadow: 0 0 6px #ffaadd;
+  }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
@@ -140,7 +156,7 @@
   <h2 style="color:#f2c2e0;">🔐 Enter the Password</h2>
   <input type="password" id="unlockInput" style="padding:10px 14px;border-radius:6px;border:none;font-family:'Quicksand';font-size:1em;">
   <br><br>
-  <button onclick="unlockPage()" style="background-color:#fce4ec;color:#111;font-size:1em;border:none;border-radius:8px;padding:10px 14px;cursor:pointer;font-family:'Quicksand';box-shadow:0 0 12px #fce4ec80;">ENTER</button>
+  <button onclick="unlockPage()" id="enter-btn">ENTER</button>
   <p id="tip" style="color:#f88;"></p>
 </div>
   <h1></h1>
@@ -421,7 +437,12 @@
   } catch (error) {
     alert('网络错误：' + error.message);
   }
-}
+ }
+    document.getElementById('unlockInput').addEventListener('keypress', function (e) {
+  if (e.key === 'Enter') {
+    unlockPage();
+  }
+});
 </script>
 </body>
 </html>
