@@ -192,6 +192,7 @@
 
     <label>✧ Choose kinks</label>
     <div class="checkbox-group" id="xp">
+      <label><input type="checkbox" value="香草"> 香草</label>
       <label><input type="checkbox" value="非自愿"> 非自愿</label>
       <label><input type="checkbox" value="bdsm"> BDSM</label>
       <label><input type="checkbox" value="口交"> 口交</label>
@@ -234,7 +235,6 @@
     function unlockPage() {
       const input = document.getElementById('unlockInput').value.trim();
       const password = 'velvetkiss';
-
       if (input === password) {
         document.getElementById('lockscreen').style.display = 'none';
         document.querySelector('.upload-box').style.display = 'block';
@@ -243,7 +243,6 @@
       }
     }
 
-    // 默认隐藏上传区域
     document.addEventListener('DOMContentLoaded', () => {
       document.querySelector('.upload-box').style.display = 'none';
     });
@@ -252,169 +251,148 @@
       const title = document.getElementById('title').value.trim();
       const category = document.getElementById('category').value;
       const content = document.getElementById('content').value.trim();
-
       const characterTags = Array.from(document.querySelectorAll('#characters input:checked')).map(cb => cb.value);
       const xpTags = Array.from(document.querySelectorAll('#xp input:checked')).map(cb => cb.value);
       const allTags = [...characterTags, ...xpTags].join(', ');
 
-    if (!title || !content) {
-      alert('标题和内容不能为空哦～');
-      return;
-    }
-
-    const token = prompt("请输入你的 GitHub Token：");
-    if (!token) {
-      alert("上传取消，未输入密钥");
-      return;
-    }
-
-    const safeTitle = title.replace(/\s+/g, "_").replace(/[^\w\-]/g, "");
-    const filename = `${Date.now()}-${safeTitle}`;
-    const folder = category.toLowerCase().replace(/\s+/g, '');
-    const path = `novels/${folder}/${filename}`;
-
-    const mdContent = `# ${title}\n\n**分类：** ${category}\n\n**关键词：** ${allTags}\n\n${content}`;
-    const mdBase64 = btoa(unescape(encodeURIComponent(mdContent)));
-
-    // 渲染 HTML 阅读页内容
-    const htmlContent = `
- <!DOCTYPE html>
- <html lang="zh">
- <head>
-   <meta charset="UTF-8" />
-   <title>${title} | VelvetWhisper</title>
-   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <style>
-     body {
-       background: #0a0a0a;
-       color: #f2c2e0;
-       font-family: "Georgia", serif;
-       line-height: 1.8;
-       padding: 40px 24px 80px;
-       max-width: 740px;
-       margin: auto;
-       user-select: none;
-     }
-
-     h1 {
-      font-size: 2em;
-      text-align: center;
-      font-family: 'Quicksand', sans-serif;
-      margin: 60px 0 40px;
-     }
-     a {
-      color: #ffaadd;
-     }
-     body, html {
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
+      if (!title || !content) {
+        alert('标题和内容不能为空哦～');
+        return;
       }
-      body {
-      -webkit-touch-callout: none;
-    }
 
-    html {
-      -webkit-user-drag: none;
-    }
+      const token = prompt("请输入你的 GitHub Token：");
+      if (!token) {
+        alert("上传取消，未输入密钥");
+        return;
+      }
 
-    body::after {
-      content: "仅限私人阅读，禁止转载截图";
+      const safeTitle = title.replace(/\s+/g, "_").replace(/[^\w\-]/g, "");
+      const filename = `${Date.now()}-${safeTitle}`;
+      const folder = category.toLowerCase().replace(/\s+/g, '');
+      const path = `novels/${folder}/${filename}`;
+
+      const mdContent = `# ${title}\n\n**分类：** ${category}\n\n**关键词：** ${allTags}\n\n${content}`;
+      const mdBase64 = btoa(unescape(encodeURIComponent(mdContent)));
+
+      const htmlContent = `
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>${title}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background: #0a0a0a;
+      color: #f2c2e0;
+      font-family: Georgia, serif;
+      padding: 40px 24px 80px;
+      max-width: 740px;
+      margin: auto;
+      line-height: 1.8;
+      user-select: none;
+    }
+    h2 { text-align: center; margin: 60px 0 40px; font-family: 'Quicksand', sans-serif; }
+    .watermark {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      font-size: 0.75em;
-      color: #888;
+      bottom: 12px;
+      right: 12px;
+      font-size: 0.9em;
+      color: #555;
+      opacity: 0.6;
     }
-
-    .btn-area {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      display: flex;
-      gap: 12px;
-      z-index: 99;
+    .blocked {
+      text-align: center;
+      margin-top: 160px;
+      font-size: 1.3em;
+      color: #f88;
     }
-
-    .btn-float {
-      background-color: #fce4ec;
+    .btn {
+      background: #fce4ec;
       color: #111;
-      font-size: 1.2em;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: none;
+      padding: 8px 14px;
       border-radius: 8px;
-      padding: 6px 12px;
+      border: none;
+      font-size: 0.9em;
+      margin-top: 20px;
       cursor: pointer;
-      font-family: 'Quicksand', sans-serif;
-      box-shadow: 0 0 10px #fce4ec80;
-      transition: all 0.3s ease;
-    }
-
-    .btn-float:hover {
-      box-shadow: 0 0 16px #fce4ecb3;
-      transform: scale(1.05);
     }
   </style>
 </head>
-<body oncontextmenu="return false">
-  <div class="btn-area">
-    <button class="btn-float" onclick="history.back()">🔙</button>
-    <button class="btn-float" onclick="location.href='/'">🏠</button>
-  </div>
-  
-  <h1>${title}</h1>
-  <div id="content">${marked.parse(content)}</div>
+<body>
+  <div id="content" class="blocked">正在验证阅读权限中...</div>
+  <div class="watermark" id="watermark"></div>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const reader = params.get('reader');
+    const article = '${filename}';
+    const api = 'https://script.google.com/macros/s/AKfycbyLRxyUAjBN0am7Jcga4EO5makZXyJFGyimR9kGu1PI19z01G55jOhssGMsJd7Gfr1qVA/exec';
+
+    fetch(api)
+      .then(res => res.json())
+      .then(data => {
+        const match = data.find(row => row['A列（reader）'] === reader && row['B列（article）'] === article);
+        if (match) {
+          document.getElementById('content').innerHTML = \`
+            <h2>${title}</h2>
+            <p><b>关键词：</b>${allTags}</p>
+            <div>${content.replace(/\\n/g, '<br>')}</div>
+          \`;
+          document.getElementById('watermark').textContent = reader;
+        } else {
+          document.getElementById('content').innerHTML = \`
+            🚫 无权阅读此内容。<br>请确认你是否已经购买并获得访问权限。
+            <br><br><button class="btn" onclick="window.history.back()">返回上一页</button>
+          \`;
+        }
+      });
+  </script>
 </body>
 </html>`.trim();
 
-  const htmlBase64 = btoa(unescape(encodeURIComponent(htmlContent)));
+      const htmlBase64 = btoa(unescape(encodeURIComponent(htmlContent)));
 
-  const repo = 'Velvetwhisper';
-  const owner = 'Velvetwhisper-verse';
+      const repo = 'Velvetwhisper';
+      const owner = 'Velvetwhisper-verse';
 
-  try {
-    // 上传 .md 文件
-    const mdRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}.md`, {
-      method: 'PUT',
-      headers: {
-        'Authorization': `token ${token}`,
-        'Accept': 'application/vnd.github.v3+json'
-      },
-      body: JSON.stringify({
-        message: `新增作品：${title}（.md）`,
-        content: mdBase64
-      })
-    });
+      try {
+        const mdRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}.md`, {
+          method: 'PUT',
+          headers: {
+            'Authorization': `token ${token}`,
+            'Accept': 'application/vnd.github.v3+json'
+          },
+          body: JSON.stringify({
+            message: `新增作品：${title}（.md）`,
+            content: mdBase64
+          })
+        });
 
-    // 上传 .html 文件
-    const htmlRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}.html`, {
-      method: 'PUT',
-      headers: {
-        'Authorization': `token ${token}`,
-        'Accept': 'application/vnd.github.v3+json'
-      },
-      body: JSON.stringify({
-        message: `新增作品：${title}（.html）`,
-        content: htmlBase64
-      })
-    });
+        const htmlRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}.html`, {
+          method: 'PUT',
+          headers: {
+            'Authorization': `token ${token}`,
+            'Accept': 'application/vnd.github.v3+json'
+          },
+          body: JSON.stringify({
+            message: `新增作品：${title}（.html）`,
+            content: htmlBase64
+          })
+        });
 
-    if (mdRes.ok && htmlRes.ok) {
-      alert('上传成功！🎉');
-      document.getElementById('title').value = '';
-      document.getElementById('content').value = '';
-      document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
-    } else {
-      alert('上传失败：' + (await mdRes.json()).message || (await htmlRes.json()).message);
+        if (mdRes.ok && htmlRes.ok) {
+          alert('上传成功！🎉');
+          document.getElementById('title').value = '';
+          document.getElementById('content').value = '';
+          document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+        } else {
+          alert('上传失败：' + (await mdRes.json()).message || (await htmlRes.json()).message);
+        }
+
+      } catch (error) {
+        alert('网络错误：' + error.message);
+      }
     }
-
-  } catch (error) {
-    alert('网络错误：' + error.message);
-  }
-}
 </script>
 </body>
 </html>
