@@ -420,8 +420,8 @@
           const validatedContent = `
             <h2>${title}</h2>
             <p><b>关键词：</b>${allTags}</p>
-            <div>${content.replace(/\n/g, '<br>')}</div>
-          `;
+            <div>\${match['C列（content）'].replace(/\\n/g, '<br>')}</div>
+          \`;
 
           document.getElementById('content').innerHTML = validatedContent;
           document.getElementById('watermark').textContent = reader;
