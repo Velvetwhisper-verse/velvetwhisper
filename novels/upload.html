@@ -305,8 +305,6 @@
 
     const mdContent = `# ${title}\n\n**分类：** ${category}\n\n**关键词：** ${allTags}\n\n${content}`;
     const mdBase64 = btoa(unescape(encodeURIComponent(mdContent)));
-    const escapedContent = content.replace(/\n/g, '<br>');  
-    const tagsLine = `<p><b>关键词：</b>${allTags}</p>`;
 
     // 渲染 HTML 阅读页内容
     const htmlContent = `
@@ -404,39 +402,7 @@
   </div>
   
   <h1>${title}</h1>
-  <div id="content">正在验证阅读权限中...</div>
-  <div class="watermark" id="watermark"></div>
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const reader = params.get('reader');                              // ✅ 这里拿到 ?reader=xxx
-    const article = '${filename}';                                    // ✅ 这里是这篇文章的编码
-    const api = 'https://script.google.com/macros/s/AKfycbyLRxyUAjBN0am7Jcga4EO5makZXyJFGyimR9kGu1PI19z01G55jOhssGMsJd7Gfr1qVA/exec';                    // ✅ 换成你的 Script 部署网址
-
-    fetch(api)
-      .then(res => res.json())
-      .then(data => {
-        const match = data.find(row => row['A列（reader）'] === reader && row['B列（article）'] === article);
-        if (match) {
-          const validatedContent = `
-            <h2>${title}</h2>
-            <p><b>关键词：</b>${allTags}</p>
-            <div>\${match['C列（content）'].replace(/\\n/g, '<br>')}</div>
-          \`;
-
-          document.getElementById('content').innerHTML = validatedContent;
-          document.getElementById('watermark').textContent = reader;
-        } else {
-          document.getElementById('content').innerHTML = \`
-            🚫 无权阅读此内容。<br>请确认你是否已经购买并获得访问权限。
-            <br><br><button class="btn" onclick="window.history.back()">返回上一页</button>
-          \`;
-        }
-      })
-      .catch((error) => {
-        console.error('验证出错:', error);
-        document.getElementById('content').innerHTML = '⚠️ 验证失败，请稍后再试。';
-      });
-  </script>
+  <div id="content">${marked.parse(content)}</div>
 </body>
 </html>`.trim();
 
