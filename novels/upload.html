@@ -107,6 +107,7 @@
       transition: all 0.2s ease;
       height: 28px; 
       line-height: 1;
+      position: relative;  /* ✅ 让内部 checkbox 居中时参考这个容器 */
     }
 
     .checkbox-group label:hover {
@@ -115,33 +116,35 @@
     }
 
     .checkbox-group input[type="checkbox"] {
+      display: flex;
+      align-items: center;         /* ✅ 垂直方向居中 */
+      justify-content: center;     /* ✅ 水平方向居中 */
       appearance: none;
       -webkit-appearance: none;
       width: 16px;
       height: 16px;
       border: 2px solid #d88aac;
-      border-radius: 50%;               /* ✅ 圆圈！ */
+      border-radius: 4px;
       background: #fff;
-      margin-right: 8px;
+      margin-right: 6px;
       display: inline-block;
-      flex-shrink: 0
       position: relative;
-      vertical-align: middle;
-      box-sizing: border-box; 
-    }
+      flex-shrink: 0;
+      vertical-align: middle; 
+   }
 
     .checkbox-group input[type="checkbox"]:checked::before {
-      content: "";
+      content: "✔";
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 8px;
-      height: 8px;
-      background-color: #d88aac;
-      border-radius: 50%;               /* ✅ 中间的小圆点 */
-      transform: translate(-50%, -50%);
-    }
-    
+      transform: translate(-50%, -50%); /* ✅ 完全居中 */
+      font-size: 16px;                  /* ✅ 勾大一点 */
+      color: #d88aac;
+      font-weight: bold;
+      line-height: 1; /* ✅ 让它在方框中垂直居中 */
+      pointer-events: none;
+   }
     #enter-btn {
       background: none;
       border: none;
