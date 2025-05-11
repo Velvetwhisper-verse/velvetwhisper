@@ -311,6 +311,7 @@
     const expireTime = new Date(Date.now() + 72 * 60 * 60 * 1000).toISOString();
 
 const htmlContent = `
+const htmlBase64 = btoa(unescape(encodeURIComponent(htmlContent)));
 <!DOCTYPE html>
 <html lang="zh">
 <head>
