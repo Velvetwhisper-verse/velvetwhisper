@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>试读 | VelvetWhisper</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background: #0a0a0a;
+      color: #f2c2e0;
+      font-family: "Georgia", serif;
+      padding: 40px 24px 80px;
+      max-width: 740px;
+      margin: auto;
+    }
+    h1 {
+      font-family: 'Quicksand', sans-serif;
+      text-align: center;
+      font-size: 2em;
+      margin: 40px 0;
+    }
+    .notice {
+      color: #888;
+      font-size: 0.9em;
+      text-align: center;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>作品试读</h1>
+  <div class="notice" id="status">加载中...</div>
+  <div id="content"></div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const file = params.get("file");
+    const expire = new Date(params.get("expire"));
+    const now = new Date();
+
+    if (!file || !expire) {
+      document.getElementById('status').innerText = "链接无效。";
+    } else if (now > expire) {
+      document.getElementById('status').innerText = "⏰ 试读已结束，请购买正式阅读权限。";
+    } else {
+      fetch(`https://raw.githubusercontent.com/Velvetwhisper-verse/Velvetwhisper/main/novels/transformers/${file}.md`)
+        .then(res => res.ok ? res.text() : Promise.reject("加载失败"))
+        .then(md => {
+          document.getElementById('status').innerText = "";
+          document.getElementById('content').innerHTML = marked.parse(md);
+        })
+        .catch(err => {
+          document.getElementById('status').innerText = "内容加载失败。";
+        });
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</body>
+</html>
