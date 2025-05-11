@@ -307,7 +307,10 @@
     const mdBase64 = btoa(unescape(encodeURIComponent(mdContent)));
 
     // 渲染 HTML 阅读页内容
-    const htmlContent = `
+    const isPreview = title === "变形金刚入门试读包";
+    const expireTime = new Date(Date.now() + 72 * 60 * 60 * 1000).toISOString();
+
+const htmlContent = `
 <!DOCTYPE html>
 <html lang="zh">
 <head>
@@ -331,21 +334,7 @@
       font-family: 'Quicksand', sans-serif;
       margin: 60px 0 40px;
     }
-    a {
-      color: #ffaadd;
-    }
-    body, html {
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-    body {
-      -webkit-touch-callout: none;
-    }
-    html {
-      -webkit-user-drag: none;
-    }
+    a { color: #ffaadd; }
     body::after {
       content: "仅限私人阅读，禁止转载截图";
       position: fixed;
@@ -353,40 +342,6 @@
       right: 20px;
       font-size: 0.75em;
       color: #888;
-    }
-    .btn-back, .btn-home {
-      position: fixed;
-      top: 20px;
-      z-index: 999;
-    }
-    .btn-back { left: 20px; }
-    .btn-home { right: 20px; }
-    .btn-float {
-      background-color: #fce4ec;
-      color: #111;
-      font-size: 1.2em;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: none;
-      border-radius: 8px;
-      padding: 6px 12px;
-      cursor: pointer;
-      font-family: 'Quicksand', sans-serif;
-      box-shadow: 0 0 10px #fce4ec80;
-      transition: all 0.3s ease;
-    }
-    .btn-float:hover {
-      box-shadow: 0 0 16px #fce4ecb3;
-      transform: scale(1.05);
-    }
-    .watermark {
-      position: fixed;
-      bottom: 12px;
-      right: 12px;
-      font-size: 0.9em;
-      color: #555;
-      opacity: 0.6;
     }
     .btn {
       background: #fce4ec;
@@ -401,38 +356,31 @@
   </style>
 </head>
 <body oncontextmenu="return false">
-  <div class="btn-back"><button class="btn-float" onclick="history.back()">🔙</button></div>
-  <div class="btn-home"><button class="btn-float" onclick="location.href='/'">🏠</button></div>
   <h1>${title}</h1>
-  <div id="content">正在验证阅读权限中...</div>
-  <div class="watermark" id="watermark"></div>
+  <div id="content">正在加载内容...</div>
 
   <script>
-    const params = new URLSearchParams(window.location.search);
-    const reader = params.get('reader');
-    const article = '${filename}';
-    const api = 'https://script.google.com/macros/s/AKfycbyLRxyUAjBN0am7Jcga4EO5makZXyJFGyimR9kGu1PI19z01G55jOhssGMsJd7Gfr1qVA/exec';
+    const isPreview = ${isPreview};
+    const expireTime = new Date("${expireTime}");
+    const now = new Date();
 
-    fetch(api)
-      .then(res => res.json())
-      .then(data => {
-        const match = data.find(row => row['A列（reader）'] === reader && row['B列（article）'] === article);
-        if (match) {
-          const rawContent = \`${content.replace(/`/g, '\\\`').replace(/\n/g, '\\n')}\`;
-          const tagsLine = \`<p><b>关键词：</b>${allTags}</p>\`;
-          const output = \`<h2>${title}</h2>\` + tagsLine + '<div>' + rawContent.replace(/\\n/g, '<br>') + '</div>';
-          document.getElementById('content').innerHTML = output;
-          document.getElementById('watermark').textContent = reader;
-        } else {
-          document.getElementById('content').innerHTML = \`
-            🚫 无权阅读此内容。<br>请确认你是否已经购买并获得访问权限。
-            <br><br><button class="btn" onclick="window.history.back()">返回上一页</button>
-          \`;
-        }
-      })
-      .catch(() => {
-        document.getElementById('content').innerHTML = '⚠️ 验证失败，请稍后再试。';
-      });
+    if (isPreview) {
+      const password = prompt("请输入试读密码：");
+      if (password !== "velvetkiss" || now > expireTime) {
+        document.getElementById("content").innerHTML = 
+          '<div style="color:#f88;text-align:center;margin-top:20vh;">🚫 试读密码错误或已过期。</div>';
+      } else {
+        document.getElementById("content").innerHTML = \`
+          <p><b>关键词：</b>${allTags}</p>
+          <div>${content.replace(/\n/g, '<br>')}</div>
+        \`;
+      }
+    } else {
+      document.getElementById("content").innerHTML = \`
+        <p><b>关键词：</b>${allTags}</p>
+        <div>${content.replace(/\n/g, '<br>')}</div>
+      \`;
+    }
   </script>
 </body>
 </html>
