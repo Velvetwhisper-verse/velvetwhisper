@@ -310,79 +310,79 @@
     const isPreview = title === "变形金刚入门试读包";
     const expireTime = new Date(Date.now() + 72 * 60 * 60 * 1000).toISOString();
 
-const htmlContent = `
-const htmlBase64 = btoa(unescape(encodeURIComponent(htmlContent)));
-<!DOCTYPE html>
-<html lang="zh">
-<head>
-  <meta charset="UTF-8" />
-  <title>${title} | VelvetWhisper</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <style>
-    body {
-      background: #0a0a0a;
-      color: #f2c2e0;
-      font-family: "Georgia", serif;
-      line-height: 1.8;
-      padding: 40px 24px 80px;
-      max-width: 740px;
-      margin: auto;
-      user-select: none;
-    }
-    h1 {
-      font-size: 2em;
-      text-align: center;
-      font-family: 'Quicksand', sans-serif;
-      margin: 60px 0 40px;
-    }
-    a { color: #ffaadd; }
-    body::after {
-      content: "仅限私人阅读，禁止转载截图";
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      font-size: 0.75em;
-      color: #888;
-    }
-    .btn {
-      background: #fce4ec;
-      color: #111;
-      padding: 8px 14px;
-      border-radius: 8px;
-      border: none;
-      font-size: 0.9em;
-      margin-top: 20px;
-      cursor: pointer;
-    }
-  </style>
-</head>
-<body oncontextmenu="return false">
-  <h1>${title}</h1>
-  <div id="content">正在加载内容...</div>
+    const htmlContent = `
+    const htmlBase64 = btoa(unescape(encodeURIComponent(htmlContent)));
+    <!DOCTYPE html>
+    <html lang="zh">
+    <head>
+      <meta charset="UTF-8" />
+      <title>${title} | VelvetWhisper</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <style>
+        body {
+          background: #0a0a0a;
+          color: #f2c2e0;
+          font-family: "Georgia", serif;
+          line-height: 1.8;
+          padding: 40px 24px 80px;
+          max-width: 740px;
+          margin: auto;
+          user-select: none;
+        }
+        h1 {
+          font-size: 2em;
+          text-align: center;
+          font-family: 'Quicksand', sans-serif;
+          margin: 60px 0 40px;
+        }
+        a { color: #ffaadd; }
+        body::after {
+          content: "仅限私人阅读，禁止转载截图";
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          font-size: 0.75em;
+          color: #888;
+        }
+        .btn {
+          background: #fce4ec;
+          color: #111;
+          padding: 8px 14px;
+          border-radius: 8px;
+          border: none;
+          font-size: 0.9em;
+          margin-top: 20px;
+          cursor: pointer;
+        }
+      </style>
+    </head>
+    <body oncontextmenu="return false">
+      <h1>${title}</h1>
+      <div id="content">正在加载内容...</div>
 
-  <script>
-    const isPreview = ${isPreview};
-    const expireTime = new Date("${expireTime}");
-    const now = new Date();
+      <script>
+        const isPreview = ${isPreview};
+        const expireTime = new Date("${expireTime}");
+        const now = new Date();
 
-    if (isPreview) {
-      const password = prompt("请输入试读密码：");
-      if (password !== "velvetkiss" || now > expireTime) {
-        document.getElementById("content").innerHTML = 
-          '<div style="color:#f88;text-align:center;margin-top:20vh;">🚫 试读密码错误或已过期。</div>';
-      } else {
-        document.getElementById("content").innerHTML = \`
-          <p><b>关键词：</b>${allTags}</p>
-          <div>${content.replace(/\n/g, '<br>')}</div>
-        \`;
-      }
-    } else {
-      document.getElementById("content").innerHTML = \`
-        <p><b>关键词：</b>${allTags}</p>
-        <div>${content.replace(/\n/g, '<br>')}</div>
-      \`;
-    }
-  </script>
+        if (isPreview) {
+          const password = prompt("请输入试读密码：");
+          if (password !== "velvetkiss" || now > expireTime) {
+            document.getElementById("content").innerHTML = 
+              '<div style="color:#f88;text-align:center;margin-top:20vh;">🚫 试读密码错误或已过期。</div>';
+          } else {
+            document.getElementById("content").innerHTML = \`
+              <p><b>关键词：</b>${allTags}</p>
+              <div>${content.replace(/\n/g, '<br>')}</div>
+            \`;
+          }
+        } else {
+          document.getElementById("content").innerHTML = \`
+            <p><b>关键词：</b>${allTags}</p>
+            <div>${content.replace(/\n/g, '<br>')}</div>
+          \`;
+        }
+      </script>
 </body>
 </html>
 `.trim();
