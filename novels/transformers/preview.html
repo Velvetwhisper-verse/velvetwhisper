@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <title>变形金刚乙女试读包 | VelvetWhisper</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      background: #0a0a0a;
+      color: #f2c2e0;
+      font-family: "Georgia", serif;
+      line-height: 1.8;
+      padding: 40px 24px 80px;
+      max-width: 740px;
+      margin: auto;
+      transition: filter 0.3s ease;
+    }
+    h1 {
+      font-size: 2em;
+      text-align: center;
+      font-family: 'Quicksand', sans-serif;
+      margin: 60px 0 40px;
+    }
+    .btn {
+      background: #fce4ec;
+      color: #111;
+      padding: 8px 14px;
+      border-radius: 8px;
+      border: none;
+      font-size: 0.9em;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+    #content.blur {
+      filter: blur(10px);
+    }
+    .watermark {
+      position: fixed;
+      bottom: 12px;
+      right: 12px;
+      font-size: 0.85em;
+      color: #555;
+      opacity: 0.5;
+    }
+  </style>
+</head>
+<body oncontextmenu="return false">
+  <h1>变形金刚乙女试读包</h1>
+  <div id="content" class="blur">加载中...</div>
+  <div class="watermark">VelvetWhisper Preview</div>
+
+  <script>
+    const PASSWORD = "velvetkiss";
+    const MAX_HOURS = 72;
+    const KEY = "velvetPreviewStartTime";
+
+    const title = "变形金刚乙女试读包";
+    const tags = "擎天柱, 非自愿, 宫交";
+    const content = `（以下是正文内容示例，可自行替换）
+“你以为你能逃出去？”擎天柱俯视着她低声问。
+
+她紧咬下唇，指尖还颤抖着，回答却倔强：“我宁愿死——”
+
+他眼中闪过一道红光：“那么就死在我身下。”`;
+
+    function isExpired(start) {
+      const now = new Date().getTime();
+      return now - start > MAX_HOURS * 60 * 60 * 1000;
+    }
+
+    // 初始化记录 startTime
+    let startTime = localStorage.getItem(KEY);
+    if (!startTime) {
+      startTime = new Date().getTime();
+      localStorage.setItem(KEY, startTime);
+    } else {
+      startTime = parseInt(startTime);
+    }
+
+    if (isExpired(startTime)) {
+      document.getElementById("content").innerHTML = 
+        '<div style="color:#f88;text-align:center;margin-top:20vh;">⏰ 试读已过期，请前往正式购买页面。</div>';
+    } else {
+      const pw = prompt("请输入试读密码：");
+      if (pw !== PASSWORD) {
+        document.getElementById("content").innerHTML = 
+          '<div style="color:#f88;text-align:center;margin-top:20vh;">❌ 密码错误，无法解锁。</div>';
+      } else {
+        const html = `
+          <p><b>关键词：</b>${tags}</p>
+          <div>${content.replace(/\n/g, '<br>')}</div>
+        `;
+        document.getElementById("content").innerHTML = html;
+        document.getElementById("content").classList.remove('blur');
+      }
+    }
+
+    // 焦点模糊时自动遮挡内容
+    window.addEventListener('blur', () => {
+      document.getElementById('content').classList.add('blur');
+    });
+    window.addEventListener('focus', () => {
+      document.getElementById('content').classList.remove('blur');
+    });
+  </script>
+</body>
+</html>
