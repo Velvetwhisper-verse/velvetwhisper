@@ -390,30 +390,10 @@
    </style>
    <script>
      const params = new URLSearchParams(window.location.search);
-     const reader = params.get('reader');
      const article = '${filename}';
      const api = 'https://script.google.com/macros/s/AKfycbyLRxyUAjBN0am7Jcga4EO5makZXyJFGyimR9kGu1PI19z01G55jOhssGMsJd7Gfr1qVA/exec';
-
-     fetch(api)
-       .then(res => res.json())
-       .then(data => {
-         const match = data.find(row => row['A列（reader）'] === reader && row['B列（article）'] === article);
-         if (match) {
-           const rawContent = \`${content.replace(/`/g, '\\`').replace(/\n/g, '\\n')}\`; 
-           const tagsLine = \`<p><b>关键词：</b>${allTags}</p>\`;
-           const output = \`<h2>${title}</h2>\` + tagsLine + '<div>' + rawContent.replace(/\\n/g, '<br>') + '</div>';
-           document.getElementById('content').innerHTML = output;
-           document.getElementById('watermark').textContent = reader;
-         } else {
-           document.getElementById('content').innerHTML = \`
-             🚫 无权阅读此内容。<br>请确认你是否已经购买并获得访问权限。
-             <br><br><button class="btn" onclick="window.history.back()">返回上一页</button>
-           \`;
-         }
-       })
-       .catch(() => {
-         document.getElementById('content').innerHTML = '⚠️ 验证失败，请稍后再试。';
-       });
+<div id="content">${content.replace(/\n/g, '<br>')}</div>
+<div class="watermark">VelvetWhisper</div>
 <\/script>
 </body>
 </html>`.trim();
