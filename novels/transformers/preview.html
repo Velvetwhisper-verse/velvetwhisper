@@ -66,11 +66,10 @@
   <div class="watermark">VelvetWhisper Preview</div>
 
   <script>
-    const PASSWORD = "VelvetAlexis";
+    const PASSWORD = "VelvetAlexis"; // 改成你要设置的密码
     const MAX_HOURS = 72;
+    const contentURL = "novels/transformers/content.html";
     const KEY = "velvetPreviewStartTime_" + PASSWORD;
-    const contentURL = "novels/transformers/content.html";  // 你的正文文件路径
-
     const tags = "包含你是我的小夜莺，沉默的爱，高纯害机不浅";
 
     function isExpired(start) {
@@ -86,21 +85,23 @@
     }
 
     if (isExpired(startTime)) {
-      document.getElementById("content").innerHTML = 
+      document.getElementById("content").innerHTML =
         '<div style="color:#f88;text-align:center;margin-top:20vh;">⏰ 试读已过期，请前往正式购买页面。</div>';
     } else {
       const pw = prompt("请输入试读密码：");
       if (pw !== PASSWORD) {
-        document.getElementById("content").innerHTML = 
+        document.getElementById("content").innerHTML =
           '<div style="color:#f88;text-align:center;margin-top:20vh;">❌ 密码错误，无法解锁。</div>';
       } else {
         document.getElementById("content").innerHTML = `
           <p><b>关键词：</b>${tags}</p>
           <iframe src="${contentURL}" width="100%" height="1200px" style="border:none;"></iframe>
-          `;
-           document.getElementById("content").classList.remove("blur");
+        `;
+        document.getElementById("content").classList.remove("blur");
       }
+    }
 
+    // 焦点模糊时自动遮挡内容
     window.addEventListener("blur", () => {
       document.getElementById("content").classList.add("blur");
     });
@@ -108,7 +109,8 @@
       document.getElementById("content").classList.remove("blur");
     });
 
-    let duration = 30 * 60;
+    // 倒计时功能
+    let duration = 30 * 60; // 30分钟
     const display = document.getElementById("countdown");
     const contentDiv = document.getElementById("content");
 
